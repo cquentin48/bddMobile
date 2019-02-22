@@ -12,6 +12,9 @@ class CategoryListTableViewController: UITableViewController {
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet var table: UITableView!
     var categories:[Categories]?
+    var filteredCategories:[Categories]?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initArray()
@@ -37,15 +40,27 @@ class CategoryListTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItem" {
-            let navVC = segue.destination as! ItemViewViewController
-            navVC.delegate = self
-            navVC.item = nil
+            let navVC = segue.destination as! UINavigationController
+            let destVC = navVC.viewControllers.first as! ItemDetailTableViewController
+            destVC.delegate = self
         }else if segue.identifier == "editItem" {
-            let navVC = segue.destination as! ItemViewViewController
-            navVC.delegate = self
+            let navVC = segue.destination as! UINavigationController
+            let destVC = navVC.viewControllers.first as! ItemDetailTableViewController
+            destVC.delegate = self
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
-            navVC.item = categories![indexPath.row]
+            destVC.item = categories![indexPath.row]
         }
+    }
+    
+    func isFiltering() -> Bool{
+        return searchController.searchBar.text != "" && searchController.isActive
+    }
+    
+    func filterData(){
+        filteredCategories = categories!.filter({( category : Categories) -> Bool in
+            return category.title!.lowercased().contains(searchController.searchBar.text!.lowercased())
+        })
+        
     }
 
     // MARK: - Table view data source
@@ -57,12 +72,20 @@ class CategoryListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (categories?.count)!
+        if(isFiltering()){
+            return filteredCategories!.count
+        }else{
+            return categories!.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath)
-        cell.textLabel?.text = categories![indexPath.row].title
+        if(isFiltering()){
+            cell.textLabel?.text = filteredCategories![indexPath.row].title
+        }else{
+            cell.textLabel?.text = categories![indexPath.row].title
+        }
         return cell
     }
 
@@ -71,26 +94,28 @@ class CategoryListTableViewController: UITableViewController {
 extension CategoryListTableViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO
+        if(isFiltering()){
+            filterData()
+        }else{
+        }
+        tableView.reloadData()
     }
 }
 
 extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
-    func itemViewControllerDidCancel(_ controller: ItemViewViewController) {
+    func itemViewControllerDidCancel(_ controller: ItemDetailTableViewController) {
         dismiss(animated: true, completion: nil)
     }
     
-    func itemDetailViewController(_ controller: ItemViewViewController, didFinishAddingItem item: Categories) {
+    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishAddingItem item: Categories) {
         table.beginUpdates()
         categories?.append(item)
         table.insertRows(at: [IndexPath(row: categories!.count-1, section: 0)], with: .automatic)
         table.endUpdates()
-        dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
     
-    func itemDetailViewController(_ controller: ItemViewViewController, didFinishEditingItem item: Categories, indexAt: Int) {
+    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }
