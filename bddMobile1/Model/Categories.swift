@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Categories{
+class Categories : Codable{
     var title:String?
     var isChecked:Bool=false
     var image:String?
