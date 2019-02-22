@@ -15,6 +15,7 @@
 		08160F5D221FEE1000571EA8 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F5C221FEE1000571EA8 /* Categories.swift */; };
 		08160F5F221FF5B600571EA8 /* CategoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */; };
 		08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */; };
+		08E7A01322205A590014283B /* TableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A01222205A590014283B /* TableViewCellController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		08160F5C221FEE1000571EA8 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListTableViewController.swift; sourceTree = "<group>"; };
 		08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
+		08E7A01222205A590014283B /* TableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				08160F48221FE8D200571EA8 /* ViewController.swift */,
 				08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */,
 				08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */,
+				08E7A01222205A590014283B /* TableViewCellController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08160F49221FE8D200571EA8 /* ViewController.swift in Sources */,
+				08E7A01322205A590014283B /* TableViewCellController.swift in Sources */,
 				08160F5F221FF5B600571EA8 /* CategoryListTableViewController.swift in Sources */,
 				08160F47221FE8D200571EA8 /* AppDelegate.swift in Sources */,
 				08160F5D221FEE1000571EA8 /* Categories.swift in Sources */,
