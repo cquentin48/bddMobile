@@ -14,6 +14,24 @@ class CategoryListTableViewController: UITableViewController {
     var categories:[Categories]?
     var filteredCategories:[Categories]?
     
+    static var documentDirectory:URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    
+    static var dataFileUrl:URL {
+        return documentDirectory.appendingPathComponent("CheckLists").appendingPathExtension("json")
+    }
+    
+    func saveChecklistItems(){
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        do{
+            let jsonData = try encoder.encode(categories)
+            try jsonData.write(to: CategoryListTableViewController.dataFileUrl)
+        }
+        catch{}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +66,7 @@ class CategoryListTableViewController: UITableViewController {
             let destVC = navVC.viewControllers.first as! ItemDetailTableViewController
             destVC.delegate = self
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+            destVC.index = indexPath.row
             destVC.item = categories![indexPath.row]
         }
     }
@@ -61,6 +80,24 @@ class CategoryListTableViewController: UITableViewController {
             return category.title!.lowercased().contains(searchController.searchBar.text!.lowercased())
         })
         
+    }
+    
+    func loadChecklistItems(){
+        do{
+            let importedData = try Data(contentsOf: CategoryListTableViewController.dataFileUrl)
+            categories = try JSONDecoder().decode([Categories].self, from: importedData)
+        }catch{
+            
+        }
+    }
+    
+    func getElementByInputText(inputElement: Categories)-> Int{
+        for i in 0...categories!.count-1 {
+            if categories![i].title == inputElement.title{
+                return i
+            }
+        }
+        return -1
     }
 
     // MARK: - Table view data source
@@ -112,10 +149,17 @@ extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
         categories?.append(item)
         table.insertRows(at: [IndexPath(row: categories!.count-1, section: 0)], with: .automatic)
         table.endUpdates()
+        saveChecklistItems()
         controller.dismiss(animated: true, completion: nil)
     }
     
     func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int) {
+        table.beginUpdates()
+        categories![indexAt] = item
+        
+        table.reloadRows(at: [IndexPath(row: indexAt, section: 0)], with: .automatic)
+        table.endUpdates()
         dismiss(animated: true, completion: nil)
+        saveChecklistItems()
     }
 }
