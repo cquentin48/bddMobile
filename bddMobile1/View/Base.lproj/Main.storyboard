@@ -58,7 +58,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="tUN-cN-Qc1" kind="presentation" id="13d-UH-2PQ"/>
+                                    <segue destination="tUN-cN-Qc1" kind="presentation" identifier="addItem" id="13d-UH-2PQ"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -124,10 +124,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZP8-ug-OQL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="100" text="Description de la catégorie" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZP8-ug-OQL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -136,7 +135,7 @@
                                                 <constraint firstItem="ZP8-ug-OQL" firstAttribute="top" secondItem="uPa-C9-O6C" secondAttribute="top" id="7LP-aO-SRv"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZP8-ug-OQL" secondAttribute="trailing" id="QFl-Ep-iAA"/>
                                                 <constraint firstItem="ZP8-ug-OQL" firstAttribute="leading" secondItem="uPa-C9-O6C" secondAttribute="leading" id="gqf-VZ-gWv"/>
-                                                <constraint firstAttribute="bottom" secondItem="ZP8-ug-OQL" secondAttribute="bottom" id="rJf-Gf-r1p"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZP8-ug-OQL" secondAttribute="bottom" constant="-56.5" id="rJf-Gf-r1p"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -184,20 +183,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="xvF-XZ-zAk">
-                        <barButtonItem key="leftBarButtonItem" title="Retour" id="CwT-uY-pLR"/>
+                        <barButtonItem key="leftBarButtonItem" title="Fermer" id="CwT-uY-pLR">
+                            <connections>
+                                <action selector="onCancelAction:" destination="Vmo-sz-qzQ" id="ceL-CO-5v1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Terminer" id="aCE-xB-WWs">
                             <connections>
-                                <action selector="onDoneAction:" destination="Vmo-sz-qzQ" id="ueH-qc-LYd"/>
+                                <action selector="onDoneAction:" destination="Vmo-sz-qzQ" id="Hty-ac-AVG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="title" destination="CQ1-CS-qJu" id="UGu-Xd-c9p"/>
+                        <outlet property="categoryDescription" destination="ZP8-ug-OQL" id="7Yp-Ot-Kz0"/>
+                        <outlet property="doneButton" destination="aCE-xB-WWs" id="80z-VG-fdw"/>
+                        <outlet property="imageView" destination="BVA-vB-RPp" id="Pux-ZF-KJU"/>
+                        <outlet property="itemList" destination="dcm-GB-BYr" id="LTc-lj-UGv"/>
+                        <outlet property="titleInput" destination="CQ1-CS-qJu" id="R4o-Tf-Xz3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGf-9A-35T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3135" y="-172"/>
+            <point key="canvasLocation" x="3133.5999999999999" y="-172.26386806596702"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hZ1-qW-zoo">
@@ -217,6 +224,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Wt-58-jXE"/>
+        <segue reference="13d-UH-2PQ"/>
     </inferredMetricsTieBreakers>
 </document>
