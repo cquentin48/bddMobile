@@ -15,9 +15,15 @@ class Categories{
     var description:String?
     var itemList: [String]?
     
-    public init(title:String, isChecked:Bool=false, image:String=""){
+    public init(title:String, isChecked:Bool=false, image:String="", description:String="", itemList:[String]=[String]()){
         self.title = title
         self.isChecked = isChecked
         self.image = image
+        self.description = description
+        self.itemList = itemList
+    }
+    
+    func toogleCheck(){
+        isChecked = !isChecked
     }
 }
