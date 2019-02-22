@@ -35,7 +35,6 @@ class CategoryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initArray()
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -50,10 +49,9 @@ class CategoryListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func initArray(){
-        categories = [Categories]()
-        categories?.append(Categories(title: "Histoire - géo"))
-        categories?.append(Categories(title: "Français"))
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        loadChecklistItems()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,12 +81,15 @@ class CategoryListTableViewController: UITableViewController {
     }
     
     func loadChecklistItems(){
+        print("Chargement des items")
         do{
             let importedData = try Data(contentsOf: CategoryListTableViewController.dataFileUrl)
             categories = try JSONDecoder().decode([Categories].self, from: importedData)
+            dump(categories)
         }catch{
             
         }
+        dump(categories)
     }
     
     func getElementByInputText(inputElement: Categories)-> Int{
@@ -159,7 +160,7 @@ extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
         
         table.reloadRows(at: [IndexPath(row: indexAt, section: 0)], with: .automatic)
         table.endUpdates()
-        dismiss(animated: true, completion: nil)
         saveChecklistItems()
+        dismiss(animated: true, completion: nil)
     }
 }
