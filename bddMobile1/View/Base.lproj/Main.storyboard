@@ -42,7 +42,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="tUN-cN-Qc1" kind="presentation" identifier="editItem" trigger="accessoryAction" id="bSo-J3-f4Y"/>
+                                    <segue destination="tUN-cN-Qc1" kind="presentation" identifier="showItem" id="wxe-Xg-rXD"/>
+                                    <segue destination="tUN-cN-Qc1" kind="presentation" identifier="editItem" trigger="accessoryAction" id="Jvq-NX-juw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -224,6 +225,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bSo-J3-f4Y"/>
+        <segue reference="Jvq-NX-juw"/>
     </inferredMetricsTieBreakers>
 </document>
