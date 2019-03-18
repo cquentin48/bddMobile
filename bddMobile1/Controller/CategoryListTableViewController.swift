@@ -126,6 +126,14 @@ class CategoryListTableViewController: UITableViewController {
         }
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            categories?.remove(at: indexPath.row)
+            table.deleteRows(at: [indexPath], with: .automatic)
+            saveChecklistItems()
+        }
+    }
 
 }
 

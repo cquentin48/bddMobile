@@ -52,17 +52,9 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        switch indexPath.row{
-        case 0:
-            return titleInput.frame.size.height
-        case 1:
-            return categoryDescription.frame.size.height
-        case 2:
-            return imageView.frame.size.height
-        default:
-            return 0.0
-        }
+    func initSize(){
+        /*let newSize = categoryDescription.sizeThatFits(CGSize(width: categoryDescription.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+        categoryDescription.frame.size = categoryDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))*/
     }
     
     @IBAction func onDoneAction(_ sender: Any) {
