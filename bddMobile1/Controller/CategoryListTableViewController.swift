@@ -118,11 +118,11 @@ class CategoryListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath) as! CategoryCell
         if(isFiltering()){
-            cell.textLabel?.text = filteredCategories![indexPath.row].title
+            cell.initCell(categoryName: filteredCategories![indexPath.row].title!, isChecked: false)
         }else{
-            cell.textLabel?.text = categories![indexPath.row].title
+            cell.initCell(categoryName: categories![indexPath.row].title!, isChecked: false)
         }
         return cell
     }

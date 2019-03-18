@@ -34,14 +34,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CategoryCellIdentifier" id="ROl-CL-bkC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CategoryCellIdentifier" id="ROl-CL-bkC" customClass="CategoryCell" customModule="bddMobile1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ROl-CL-bkC" id="cti-ew-mSw">
                                     <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s6-Ga-w12">
+                                            <rect key="frame" x="41" y="22" width="42" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="✓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0z-lm-6ei">
+                                            <rect key="frame" x="16" y="11.5" width="15" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2s6-Ga-w12" firstAttribute="centerY" secondItem="cti-ew-mSw" secondAttribute="centerY" id="62C-nz-tWy"/>
+                                        <constraint firstItem="2s6-Ga-w12" firstAttribute="leading" secondItem="g0z-lm-6ei" secondAttribute="trailing" constant="10" id="KNF-QK-kds"/>
+                                        <constraint firstItem="g0z-lm-6ei" firstAttribute="leading" secondItem="cti-ew-mSw" secondAttribute="leadingMargin" id="Tu9-Vn-wKA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="2s6-Ga-w12" secondAttribute="trailing" id="Y2U-my-5ao"/>
+                                        <constraint firstItem="g0z-lm-6ei" firstAttribute="centerY" secondItem="cti-ew-mSw" secondAttribute="centerY" id="xuW-6M-B2C"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="categoryCellTextView" destination="2s6-Ga-w12" id="fmQ-WA-wMt"/>
+                                    <outlet property="categoryIsChecked" destination="g0z-lm-6ei" id="OiR-kc-c8x"/>
                                     <segue destination="tUN-cN-Qc1" kind="presentation" identifier="showItem" id="wxe-Xg-rXD"/>
                                     <segue destination="tUN-cN-Qc1" kind="presentation" identifier="editItem" trigger="accessoryAction" id="Jvq-NX-juw"/>
                                 </connections>
@@ -79,7 +102,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1246" y="-172"/>
+            <point key="canvasLocation" x="1245.5999999999999" y="-172.26386806596702"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="d8y-nG-HU5">
@@ -225,6 +248,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jvq-NX-juw"/>
+        <segue reference="wxe-Xg-rXD"/>
     </inferredMetricsTieBreakers>
 </document>
