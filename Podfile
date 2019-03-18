@@ -7,4 +7,10 @@ target 'bddMobile1' do
 
   # Pods for bddMobile1
  pod 'Firebase/Core'
+ pod 'FirebaseUI/Auth'
+ pod 'GoogleSignIn'
+ pod 'FirebaseUI/Google'
+ pod 'FirebaseUI/Facebook'
+ pod 'FirebaseUI/Twitter'
+ pod 'FirebaseUI/Phone'
 end
