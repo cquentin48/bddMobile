@@ -73,14 +73,41 @@ class ConnectionController: UIViewController {
             print("Error : \(error.debugDescription)")
         }else{
             print("Connecté")
+            loadCheckListData()
             goToMainStoryboard()
         }
     }
     
     func goToMainStoryboard(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "mainStoryBoardMainViewController") as UIViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "mainStoryBoardMainViewController") as! CategoryListTableViewController
         present(vc, animated: true, completion: nil)
+    }
+    
+    func loadCheckListData(){
+        modelData.loadChecklistItems()
+    }
+    
+    func sendSignInEmail(email:String){
+        let actionCodeSettings = ActionCodeSettings()
+        // The sign-in operation has to always be completed in the app.
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+        actionCodeSettings.setAndroidPackageName("com.example.android",
+                                                 installIfNotAvailable: false, minimumVersion: "12")
+        Auth.auth().sendSignInLink(toEmail:email,
+                                   actionCodeSettings: actionCodeSettings) { error in
+                                    // ...
+                                    if let error = error {
+                                        print("Erreur : "+error.localizedDescription)
+                                        return
+                                    }
+                                    // The link was successfully sent. Inform the user.
+                                    // Save the email locally so you don't need to ask the user for it again
+                                    // if they open the link on the same device.
+                                    UserDefaults.standard.set(email, forKey: "Email")
+                                    print("Check your email for link")
+        }
     }
 }
 
@@ -90,11 +117,13 @@ extension ConnectionController : RegistrationDelegate{
     }
     
     func didRegisterUser(_ controller: RegistrationController, _ user: Profile) {
+        let profile = user
         Auth.auth().createUser(withEmail: user.email, password: user.password){ user, error in
             if error == nil && user != nil {
                 print("Nouvel utilisateur")
-                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainScreen") as UIViewController
-                self.present(viewController, animated: false, completion: nil)
+                self.sendSignInEmail(email: profile.email)
+                /*let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainScreen") as UIViewController
+                self.present(viewController, animated: false, completion: nil)*/
             }else{
                 print("Error : \(error?.localizedDescription)")
             }

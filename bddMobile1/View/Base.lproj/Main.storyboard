@@ -28,7 +28,7 @@
         <!--Category-->
         <scene sceneID="taT-KI-LUK">
             <objects>
-                <tableViewController storyboardIdentifier="mainStoryBoardMainViewController" id="di7-5f-9Ke" customClass="CategoryListTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mainStoryBoardMainViewController" clearsSelectionOnViewWillAppear="NO" id="di7-5f-9Ke" customClass="CategoryListTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" id="Gep-hV-zRH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

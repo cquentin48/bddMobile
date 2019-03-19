@@ -9,39 +9,12 @@
 import UIKit
 
 class CategoryListTableViewController: UITableViewController {
-    let searchController = UISearchController(searchResultsController: nil)
+    var searchController:UISearchController?
     @IBOutlet var table: UITableView!
-    var categories:[Categories]?
-    var filteredCategories:[Categories]?
-    
-    static var documentDirectory:URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    }
-    
-    static var dataFileUrl:URL {
-        return documentDirectory.appendingPathComponent("CheckLists").appendingPathExtension("json")
-    }
-    
-    func saveChecklistItems(){
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        do{
-            let jsonData = try encoder.encode(categories)
-            try jsonData.write(to: CategoryListTableViewController.dataFileUrl)
-        }
-        catch{}
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadChecklistItems()
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Rechercher une catégorie"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        initSearchController()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -52,6 +25,17 @@ class CategoryListTableViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initSearchController()
+    }
+    
+    func initSearchController(){
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController!.searchResultsUpdater = self
+        searchController!.obscuresBackgroundDuringPresentation = false
+        searchController!.searchBar.placeholder = "Rechercher une catégorie"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,36 +49,17 @@ class CategoryListTableViewController: UITableViewController {
             destVC.delegate = self
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
             destVC.index = indexPath.row
-            destVC.item = categories![indexPath.row]
+            destVC.item = modelData.categories![indexPath.row]
         }
     }
     
     func isFiltering() -> Bool{
-        return searchController.searchBar.text != "" && searchController.isActive
-    }
-    
-    func filterData(){
-        filteredCategories = categories!.filter({( category : Categories) -> Bool in
-            return category.title!.lowercased().contains(searchController.searchBar.text!.lowercased())
-        })
-        
-    }
-    
-    func loadChecklistItems(){
-        print("Chargement des items")
-        do{
-            let importedData = try Data(contentsOf: CategoryListTableViewController.dataFileUrl)
-            categories = try JSONDecoder().decode([Categories].self, from: importedData)
-            dump(categories)
-        }catch{
-            
-        }
-        dump(categories)
+        return searchController!.searchBar.text != "" && searchController!.isActive
     }
     
     func getElementByInputText(inputElement: Categories)-> Int{
-        for i in 0...categories!.count-1 {
-            if categories![i].title == inputElement.title{
+        for i in 0...modelData.categories!.count-1 {
+            if modelData.categories![i].title == inputElement.title{
                 return i
             }
         }
@@ -111,37 +76,36 @@ class CategoryListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if(isFiltering()){
-            return filteredCategories!.count
+            return modelData.filteredCategories!.count
         }else{
-            return categories!.count
+            return modelData.categories!.count
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath) as! CategoryCell
         if(isFiltering()){
-            cell.initCell(categoryName: filteredCategories![indexPath.row].title!, isChecked: false)
+            cell.initCell(categoryName: modelData.filteredCategories![indexPath.row].title!, isChecked: false)
         }else{
-            cell.initCell(categoryName: categories![indexPath.row].title!, isChecked: false)
+            cell.initCell(categoryName: modelData.categories![indexPath.row].title!, isChecked: false)
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            categories?.remove(at: indexPath.row)
+            modelData.categories?.remove(at: indexPath.row)
             table.deleteRows(at: [indexPath], with: .automatic)
-            saveChecklistItems()
+            modelData.saveChecklistItems()
         }
     }
-
 }
 
 extension CategoryListTableViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         if(isFiltering()){
-            filterData()
+            modelData.filterData(searchController)
         }else{
         }
         tableView.reloadData()
@@ -155,20 +119,20 @@ extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
     
     func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishAddingItem item: Categories) {
         table.beginUpdates()
-        categories?.append(item)
-        table.insertRows(at: [IndexPath(row: categories!.count-1, section: 0)], with: .automatic)
+        modelData.categories?.append(item)
+        table.insertRows(at: [IndexPath(row: modelData.categories!.count-1, section: 0)], with: .automatic)
         table.endUpdates()
-        saveChecklistItems()
+        modelData.saveChecklistItems()
         controller.dismiss(animated: true, completion: nil)
     }
     
     func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int) {
         table.beginUpdates()
-        categories![indexAt] = item
+        modelData.categories![indexAt] = item
         
         table.reloadRows(at: [IndexPath(row: indexAt, section: 0)], with: .automatic)
         table.endUpdates()
-        saveChecklistItems()
+        modelData.saveChecklistItems()
         dismiss(animated: true, completion: nil)
     }
 }
