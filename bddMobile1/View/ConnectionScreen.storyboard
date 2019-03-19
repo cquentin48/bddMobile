@@ -18,45 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63f-Ef-xDc">
-                                <rect key="frame" x="95" y="481" width="185" height="30"/>
-                                <state key="normal" title="Connection avec Facebook"/>
-                                <connections>
-                                    <action selector="connectAction:" destination="9Kg-QX-dQM" eventType="touchUpInside" id="Tuw-Sd-WXh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4XN-ih-DTJ">
-                                <rect key="frame" x="75.5" y="543" width="224" height="30"/>
-                                <state key="normal" title="Connection avec un compte mail"/>
-                                <connections>
-                                    <action selector="connectAction:" destination="9Kg-QX-dQM" eventType="touchUpInside" id="xeh-rm-fZp"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yW-Dg-H7m">
-                                <rect key="frame" x="151.5" y="419" width="72" height="30"/>
+                                <rect key="frame" x="151.5" y="543" width="72" height="30"/>
                                 <state key="normal" title="Inscription"/>
                                 <connections>
                                     <segue destination="TBx-gM-DkS" kind="presentation" identifier="register" id="Fby-an-l7h"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgZ-aQ-Ks9">
-                                <rect key="frame" x="103.5" y="605" width="168" height="30"/>
-                                <state key="normal" title="Connection avec Google"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63f-Ef-xDc">
+                                <rect key="frame" x="148" y="605" width="79" height="30"/>
+                                <state key="normal" title="Connection"/>
                                 <connections>
-                                    <action selector="signIn:" destination="9Kg-QX-dQM" eventType="touchUpInside" id="ymi-pi-MT3"/>
+                                    <action selector="connectAction:" destination="9Kg-QX-dQM" eventType="touchUpInside" id="Tuw-Sd-WXh"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8yW-Dg-H7m" firstAttribute="centerX" secondItem="8uz-Lv-JgX" secondAttribute="centerX" id="0e0-rL-lnO"/>
-                            <constraint firstItem="63f-Ef-xDc" firstAttribute="top" secondItem="8yW-Dg-H7m" secondAttribute="bottom" constant="32" id="5g7-va-73J"/>
-                            <constraint firstItem="n4h-qx-NJa" firstAttribute="bottom" secondItem="VgZ-aQ-Ks9" secondAttribute="bottom" constant="32" id="G4I-PO-esh"/>
-                            <constraint firstItem="VgZ-aQ-Ks9" firstAttribute="centerX" secondItem="8uz-Lv-JgX" secondAttribute="centerX" id="Rs4-0z-vdE"/>
-                            <constraint firstItem="4XN-ih-DTJ" firstAttribute="top" secondItem="63f-Ef-xDc" secondAttribute="bottom" constant="32" id="XcG-IJ-sin"/>
-                            <constraint firstItem="VgZ-aQ-Ks9" firstAttribute="top" secondItem="4XN-ih-DTJ" secondAttribute="bottom" constant="32" id="gO7-7c-8Tu"/>
-                            <constraint firstItem="4XN-ih-DTJ" firstAttribute="centerX" secondItem="8uz-Lv-JgX" secondAttribute="centerX" id="mlv-nM-Yq6"/>
-                            <constraint firstItem="8yW-Dg-H7m" firstAttribute="top" secondItem="n4h-qx-NJa" secondAttribute="top" constant="399" id="waK-d5-xQx"/>
+                            <constraint firstItem="63f-Ef-xDc" firstAttribute="top" secondItem="8yW-Dg-H7m" secondAttribute="bottom" constant="32" id="EVe-7R-dRZ"/>
+                            <constraint firstItem="n4h-qx-NJa" firstAttribute="bottom" secondItem="63f-Ef-xDc" secondAttribute="bottom" constant="32" id="eJg-IJ-mji"/>
                             <constraint firstItem="63f-Ef-xDc" firstAttribute="centerX" secondItem="8uz-Lv-JgX" secondAttribute="centerX" id="zrA-1M-kz6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n4h-qx-NJa"/>
@@ -97,7 +78,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" textContentType="username"/>
                                                     <connections>
                                                         <action selector="usernameInputChanged:" destination="zKw-Bm-79Q" eventType="valueChanged" id="4eK-25-tUw"/>
                                                     </connections>
@@ -131,7 +112,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                                     <connections>
                                                         <action selector="passwordInputChanged:" destination="zKw-Bm-79Q" eventType="editingDidEnd" id="jyO-1d-s6W"/>
                                                     </connections>
@@ -165,7 +146,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                                     <connections>
                                                         <action selector="emailInputChanged:" destination="zKw-Bm-79Q" eventType="editingDidEnd" id="we8-IH-HOd"/>
                                                     </connections>

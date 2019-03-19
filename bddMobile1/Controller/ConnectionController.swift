@@ -24,7 +24,7 @@ class ConnectionController: UIViewController {
         authUI?.delegate = self as FUIAuthDelegate
         let providers:[FUIAuthProvider] = [
             FUIGoogleAuth(),
-            //FUIFacebookAuth(),
+            FUIFacebookAuth(),
             FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!)
         ]
         authUI?.providers = providers

@@ -35,6 +35,7 @@ class CategoryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadChecklistItems()
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -51,7 +52,6 @@ class CategoryListTableViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        loadChecklistItems()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
