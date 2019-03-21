@@ -41,6 +41,8 @@ PODS:
   - FirebaseUI/Auth (6.1.0):
     - Firebase/Auth (~> 5.0)
     - GoogleUtilities/UserDefaults
+  - FirebaseUI/Email (6.1.0):
+    - FirebaseUI/Auth
   - FirebaseUI/Facebook (6.1.0):
     - FBSDKLoginKit (~> 4.35)
     - FirebaseUI/Auth
@@ -101,6 +103,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - FirebaseUI/Auth
+  - FirebaseUI/Email
   - FirebaseUI/Facebook
   - FirebaseUI/Google
   - FirebaseUI/Phone
@@ -148,6 +151,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 1fd5abccf1682a0c561c9003871b92d0c669b26d
+PODFILE CHECKSUM: dafe3d1532a06e16e2a740aee476585478568b85
 
 COCOAPODS: 1.5.2

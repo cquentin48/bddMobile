@@ -26,8 +26,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63f-Ef-xDc">
-                                <rect key="frame" x="148" y="605" width="79" height="30"/>
-                                <state key="normal" title="Connection"/>
+                                <rect key="frame" x="151" y="605" width="73" height="30"/>
+                                <state key="normal" title="Connexion"/>
                                 <connections>
                                     <action selector="connectAction:" destination="9Kg-QX-dQM" eventType="touchUpInside" id="Tuw-Sd-WXh"/>
                                 </connections>

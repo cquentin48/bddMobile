@@ -9,6 +9,7 @@ target 'bddMobile1' do
  pod 'Firebase/Core'
  pod 'FirebaseUI/Auth'
  pod 'GoogleSignIn'
+ pod 'FirebaseUI/Email'
  pod 'FirebaseUI/Google'
  pod 'FirebaseUI/Facebook'
  pod 'FirebaseUI/Twitter'

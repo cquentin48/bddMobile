@@ -25,6 +25,7 @@ class ConnectionController: UIViewController {
         let providers:[FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
+            FUIEmailAuth(),
             FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!)
         ]
         authUI?.providers = providers
@@ -51,6 +52,7 @@ class ConnectionController: UIViewController {
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
+            FUIEmailAuth(),
             FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!),
             ]
         authUI?.providers = providers
@@ -80,7 +82,7 @@ class ConnectionController: UIViewController {
     
     func goToMainStoryboard(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "mainStoryBoardMainViewController") as! CategoryListTableViewController
+        let vc = storyboard.instantiateInitialViewController() as! UINavigationController
         present(vc, animated: true, completion: nil)
     }
     
