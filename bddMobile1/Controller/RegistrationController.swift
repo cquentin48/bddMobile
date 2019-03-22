@@ -25,10 +25,10 @@ class RegistrationController: UITableViewController, UIImagePickerControllerDele
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var cgu: UILabel!
-    @IBOutlet weak var refuseButton: MDCButton!
-    @IBOutlet weak var acceptButton: MDCButton!
     
     @IBOutlet weak var avatarImage: UIImageView!
+    @IBAction func onAcceptCGUSwitchStateValueChanged(_ sender: Any) {
+    }
     
     
     override func viewDidLoad() {

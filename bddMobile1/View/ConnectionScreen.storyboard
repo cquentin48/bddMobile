@@ -216,25 +216,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-t4-isR">
-                                                    <rect key="frame" x="295" y="7" width="64" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" title="Je refuse">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olB-pH-3EW">
-                                                    <rect key="frame" x="16" y="7" width="67" height="30"/>
-                                                    <state key="normal" title="J'accepte">
-                                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="J'accepte le CGU :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rI-aI-3h7">
+                                                    <rect key="frame" x="16" y="11.5" width="141.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gxd-wy-4Zf">
+                                                    <rect key="frame" x="308" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="onAcceptCGUSwitchStateValueChanged:" destination="zKw-Bm-79Q" eventType="valueChanged" id="bIs-US-qQk"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1d5-t4-isR" firstAttribute="centerY" secondItem="rLy-w9-CDP" secondAttribute="centerY" id="5vr-XE-gRA"/>
-                                                <constraint firstAttribute="trailing" secondItem="1d5-t4-isR" secondAttribute="trailing" constant="16" id="PcP-nC-VI4"/>
-                                                <constraint firstItem="olB-pH-3EW" firstAttribute="centerY" secondItem="rLy-w9-CDP" secondAttribute="centerY" id="UZf-Hh-NZV"/>
-                                                <constraint firstItem="olB-pH-3EW" firstAttribute="leading" secondItem="rLy-w9-CDP" secondAttribute="leading" constant="16" id="brm-qo-2Ji"/>
+                                                <constraint firstItem="4rI-aI-3h7" firstAttribute="centerY" secondItem="rLy-w9-CDP" secondAttribute="centerY" id="Nzu-Iw-EN0"/>
+                                                <constraint firstAttribute="trailing" secondItem="gxd-wy-4Zf" secondAttribute="trailing" constant="18" id="Q4m-H0-ObA"/>
+                                                <constraint firstItem="gxd-wy-4Zf" firstAttribute="centerY" secondItem="rLy-w9-CDP" secondAttribute="centerY" id="RP0-gH-soI"/>
+                                                <constraint firstItem="4rI-aI-3h7" firstAttribute="leading" secondItem="rLy-w9-CDP" secondAttribute="leadingMargin" id="oXt-jX-ZpE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -259,13 +258,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="acceptButton" destination="olB-pH-3EW" id="1qt-pe-ijw"/>
                         <outlet property="avatarImage" destination="OJi-1d-3Fe" id="R2G-P3-plu"/>
                         <outlet property="cgu" destination="jbo-bh-iTX" id="FdG-VO-hTX"/>
                         <outlet property="doneButton" destination="WR6-eX-gg7" id="swz-kY-N6c"/>
                         <outlet property="emailInput" destination="iHq-Pb-Qjc" id="aR4-jc-K0N"/>
                         <outlet property="passwordInput" destination="CKZ-Ks-K2B" id="SsL-IP-gmz"/>
-                        <outlet property="refuseButton" destination="1d5-t4-isR" id="87g-EV-dre"/>
                         <outlet property="usernameInput" destination="BUB-ph-0bu" id="P1g-cT-0He"/>
                     </connections>
                 </tableViewController>
