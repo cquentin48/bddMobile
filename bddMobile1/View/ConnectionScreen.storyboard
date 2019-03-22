@@ -195,17 +195,46 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inscrire ici les conditions générales d'utilisation pour utiliser l'application de gestion" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbo-bh-iTX">
-                                                    <rect key="frame" x="2" y="8" width="371" height="27.5"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="jbo-bh-iTX" secondAttribute="trailing" constant="2" id="IMl-Jx-aAl"/>
+                                                <constraint firstAttribute="trailing" secondItem="jbo-bh-iTX" secondAttribute="trailing" constant="16" id="IMl-Jx-aAl"/>
                                                 <constraint firstAttribute="bottom" secondItem="jbo-bh-iTX" secondAttribute="bottom" constant="8" id="Me0-4a-8gJ"/>
                                                 <constraint firstItem="jbo-bh-iTX" firstAttribute="top" secondItem="ZJT-p0-TAc" secondAttribute="top" constant="8" id="Rv1-kt-jRP"/>
-                                                <constraint firstItem="jbo-bh-iTX" firstAttribute="leading" secondItem="ZJT-p0-TAc" secondAttribute="leading" constant="2" id="ufS-AM-qUo"/>
+                                                <constraint firstItem="jbo-bh-iTX" firstAttribute="leading" secondItem="ZJT-p0-TAc" secondAttribute="leading" constant="16" id="ufS-AM-qUo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SxD-7L-YEG">
+                                        <rect key="frame" x="0.0" y="304" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SxD-7L-YEG" id="rLy-w9-CDP">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-t4-isR">
+                                                    <rect key="frame" x="295" y="7" width="64" height="30"/>
+                                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Je refuse">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olB-pH-3EW">
+                                                    <rect key="frame" x="16" y="7" width="67" height="30"/>
+                                                    <state key="normal" title="J'accepte">
+                                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1d5-t4-isR" firstAttribute="centerY" secondItem="rLy-w9-CDP" secondAttribute="centerY" id="5vr-XE-gRA"/>
+                                                <constraint firstAttribute="trailing" secondItem="1d5-t4-isR" secondAttribute="trailing" constant="16" id="PcP-nC-VI4"/>
+                                                <constraint firstItem="olB-pH-3EW" firstAttribute="centerY" secondItem="rLy-w9-CDP" secondAttribute="centerY" id="UZf-Hh-NZV"/>
+                                                <constraint firstItem="olB-pH-3EW" firstAttribute="leading" secondItem="rLy-w9-CDP" secondAttribute="leading" constant="16" id="brm-qo-2Ji"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -230,17 +259,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="acceptButton" destination="olB-pH-3EW" id="1qt-pe-ijw"/>
                         <outlet property="avatarImage" destination="OJi-1d-3Fe" id="R2G-P3-plu"/>
                         <outlet property="cgu" destination="jbo-bh-iTX" id="FdG-VO-hTX"/>
                         <outlet property="doneButton" destination="WR6-eX-gg7" id="swz-kY-N6c"/>
                         <outlet property="emailInput" destination="iHq-Pb-Qjc" id="aR4-jc-K0N"/>
                         <outlet property="passwordInput" destination="CKZ-Ks-K2B" id="SsL-IP-gmz"/>
+                        <outlet property="refuseButton" destination="1d5-t4-isR" id="87g-EV-dre"/>
                         <outlet property="usernameInput" destination="BUB-ph-0bu" id="P1g-cT-0He"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0US-xd-XD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="163"/>
+            <point key="canvasLocation" x="1861.5999999999999" y="162.3688155922039"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LEw-19-moe">

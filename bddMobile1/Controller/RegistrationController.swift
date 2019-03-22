@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseUI
 import Firebase
+import MaterialComponents.MaterialButtons
 
 protocol RegistrationDelegate {
     func didCancel(_ controller:RegistrationController)
@@ -24,6 +25,8 @@ class RegistrationController: UITableViewController, UIImagePickerControllerDele
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var cgu: UILabel!
+    @IBOutlet weak var refuseButton: MDCButton!
+    @IBOutlet weak var acceptButton: MDCButton!
     
     @IBOutlet weak var avatarImage: UIImageView!
     

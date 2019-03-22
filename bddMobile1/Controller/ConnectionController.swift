@@ -34,9 +34,6 @@ class ConnectionController: UIViewController {
         present(authViewController, animated: true, completion: nil)
     }
     
-    @IBAction func signIn(_ sender: Any) {
-    }
-    
     override func viewDidLoad() {
         FirebaseApp.configure()
         super.viewDidLoad()
@@ -91,6 +88,7 @@ class ConnectionController: UIViewController {
     
     func sendSignInEmail(email:String){
         let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://bddmobile.page.link/bCK1")
         // The sign-in operation has to always be completed in the app.
         actionCodeSettings.handleCodeInApp = true
         actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
@@ -98,9 +96,10 @@ class ConnectionController: UIViewController {
                                                  installIfNotAvailable: false, minimumVersion: "12")
         Auth.auth().sendSignInLink(toEmail:email,
                                    actionCodeSettings: actionCodeSettings) { error in
-                                    // ...
+                                    let details = error.debugDescription
                                     if let error = error {
                                         print("Erreur : "+error.localizedDescription)
+                                        print("Error : "+details)
                                         return
                                     }
                                     // The link was successfully sent. Inform the user.

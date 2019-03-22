@@ -14,4 +14,5 @@ target 'bddMobile1' do
  pod 'FirebaseUI/Facebook'
  pod 'FirebaseUI/Twitter'
  pod 'FirebaseUI/Phone'
+ pod 'MaterialComponents/Buttons'
 end
