@@ -133,6 +133,6 @@ extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
         table.reloadRows(at: [IndexPath(row: indexAt, section: 0)], with: .automatic)
         table.endUpdates()
         modelData.saveChecklistItems()
-        dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
 }
