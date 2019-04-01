@@ -20,25 +20,37 @@ class FirebaseDatabase{
     
     func addCategories(category:Categories, position:Int){
         let ref = db.child("collection").ref
-        category.id = (ref.childByAutoId()).key ?? "nil"
-        let categoryRef = ref.child(category.id).ref.setValue([
+        category.id = (ref.childByAutoId()).key!
+        let categoryRef = ref.child(category.id).setValue([
             "title" : category.title,
-            "isChecked" : category.isChecked,
-            "image" : category.image,
             "description" : category.description,
-            "authorId": Auth.auth().currentUser?.uid,
-            "itemList": category.itemList
-            ]){ (error) in
-            print("Erreur", error)
-        }
+            "image" : category.image,
+            "authorId" : category.authorId,
+            "isChecked" : category.isChecked,
+            "itemList" : category.itemList
+        ])
     }
     
     func loadAllCategories(){
-        let ref = db.child("users").child(Auth.auth().currentUser!.uid).child("collection").ref
+        let ref = db.child("collection").ref
         ref.observe(.value, with: {(snapshot) in
-            /*snapshot.value as! [String:Any]*/
+            let categories = snapshot.value as? NSDictionary
+            let categoriesKey = categories?.allKeys as! Array<String>
+            categoriesKey.map{(singleKey) in
+                self.addCategoryToList(rawData: categories?.object(forKey: singleKey) as! NSDictionary, index: singleKey)
+            }
         }) {(error) in
             print("Error : ", error)
         }
+    }
+    
+    func addCategoryToList(rawData:NSDictionary, index:String)->Categories{
+        let category = Categories(title: rawData.object(forKey: "title") as! String,
+                                  isChecked: rawData.object(forKey: "isChecked") as! Bool,
+                                  image: rawData.object(forKey: "image") as! String,
+                                  description: rawData.object(forKey: "description") as! String,
+                                  itemList: (rawData.object(forKey: "itemList") != nil) as! [String],
+                                  id: index)
+        return category
     }
 }
