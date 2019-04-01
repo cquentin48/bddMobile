@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseUI
 import Firebase
+import MBProgressHUD
 
 class ConnectionController: UIViewController {
     var authUI:FUIAuth?
@@ -70,7 +71,7 @@ class ConnectionController: UIViewController {
         if(error != nil){
             print("Error : \(error.debugDescription)")
         }else{
-            print("Connecté")
+            displayToast(message: "Connection réussie!")
             loadCheckListData()
             goToMainStoryboard()
         }
@@ -86,28 +87,15 @@ class ConnectionController: UIViewController {
         modelData.loadChecklistItems()
     }
     
-    func sendSignInEmail(email:String){
-        let actionCodeSettings = ActionCodeSettings()
-        actionCodeSettings.url = URL(string: "https://bddmobile.page.link/bCK1")
-        // The sign-in operation has to always be completed in the app.
-        actionCodeSettings.handleCodeInApp = true
-        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-        actionCodeSettings.setAndroidPackageName("com.example.android",
-                                                 installIfNotAvailable: false, minimumVersion: "12")
-        Auth.auth().sendSignInLink(toEmail:email,
-                                   actionCodeSettings: actionCodeSettings) { error in
-                                    let details = error.debugDescription
-                                    if let error = error {
-                                        print("Erreur : "+error.localizedDescription)
-                                        print("Error : "+details)
-                                        return
-                                    }
-                                    // The link was successfully sent. Inform the user.
-                                    // Save the email locally so you don't need to ask the user for it again
-                                    // if they open the link on the same device.
-                                    UserDefaults.standard.set(email, forKey: "Email")
-                                    print("Check your email for link")
-        }
+    private func displayToast(message:String){
+        let progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHUD.mode = MBProgressHUDMode.text
+        progressHUD.detailsLabel.text = message
+        progressHUD.margin = 10.0
+        progressHUD.offset.y = 150.0
+        progressHUD.isUserInteractionEnabled = false
+        progressHUD.removeFromSuperViewOnHide = true
+        progressHUD.hide(animated: true, afterDelay: 3.0)
     }
 }
 
@@ -120,10 +108,7 @@ extension ConnectionController : RegistrationDelegate{
         let profile = user
         Auth.auth().createUser(withEmail: user.email, password: user.password){ user, error in
             if error == nil && user != nil {
-                print("Nouvel utilisateur")
-                self.sendSignInEmail(email: profile.email)
-                /*let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainScreen") as UIViewController
-                self.present(viewController, animated: false, completion: nil)*/
+                self.displayToast(message: "Félicitations! Vous voilà inscrit!")
             }else{
                 print("Error : \(error?.localizedDescription)")
             }

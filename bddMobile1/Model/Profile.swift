@@ -9,13 +9,11 @@
 import UIKit
 let profile = Profile()
 class Profile{
-    var username:String
     var password:String
     var email:String
     
-    required init(email:String = "", password:String="", username:String="") {
+    required init(email:String = "", password:String="") {
         self.email=email
         self.password=password
-        self.username=username
     }
 }

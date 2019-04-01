@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Kg-QX-dQM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Kg-QX-dQM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,13 +65,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pseudonyme :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDo-cI-rVD">
-                                                    <rect key="frame" x="24" y="11.5" width="109" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDo-cI-rVD">
+                                                    <rect key="frame" x="24" y="11.5" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUB-ph-0bu">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex : mailadress@mail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUB-ph-0bu">
                                                     <rect key="frame" x="147" y="7" width="220" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="220" id="iic-tz-903"/>
@@ -80,7 +80,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" textContentType="username"/>
                                                     <connections>
-                                                        <action selector="usernameInputChanged:" destination="zKw-Bm-79Q" eventType="valueChanged" id="4eK-25-tUw"/>
+                                                        <action selector="emailEndEditing:" destination="zKw-Bm-79Q" eventType="editingDidEnd" id="7IS-Mw-Dih"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -105,7 +105,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKZ-Ks-K2B">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex : 1passwordToAdd." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKZ-Ks-K2B">
                                                     <rect key="frame" x="147" y="7" width="220" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="220" id="7Aw-RK-cCg"/>
@@ -114,7 +114,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                                     <connections>
-                                                        <action selector="passwordInputChanged:" destination="zKw-Bm-79Q" eventType="editingDidEnd" id="jyO-1d-s6W"/>
+                                                        <action selector="passwordEndEditing:" destination="zKw-Bm-79Q" eventType="editingDidEnd" id="zhM-Hb-3lP"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -126,46 +126,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Adf-4q-Tm3">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Adf-4q-Tm3" id="GfU-xo-ery">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCx-3N-Sl6">
-                                                    <rect key="frame" x="24" y="11.5" width="50" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iHq-Pb-Qjc">
-                                                    <rect key="frame" x="147" y="7" width="220" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="220" id="TxH-63-PtM"/>
-                                                    </constraints>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
-                                                    <connections>
-                                                        <action selector="emailInputChanged:" destination="zKw-Bm-79Q" eventType="editingDidEnd" id="we8-IH-HOd"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="iHq-Pb-Qjc" secondAttribute="trailing" constant="8" id="2Df-b7-R6U"/>
-                                                <constraint firstItem="MCx-3N-Sl6" firstAttribute="leading" secondItem="GfU-xo-ery" secondAttribute="leadingMargin" constant="8" id="KWN-hw-pJH"/>
-                                                <constraint firstItem="MCx-3N-Sl6" firstAttribute="centerY" secondItem="GfU-xo-ery" secondAttribute="centerY" id="d6S-gK-QNC"/>
-                                                <constraint firstItem="iHq-Pb-Qjc" firstAttribute="centerY" secondItem="GfU-xo-ery" secondAttribute="centerY" id="zsH-g8-wRi"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Conditions générales d'utilisation" id="jEj-4V-Gbf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eJ2-at-5sh">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJ2-at-5sh" id="ZJT-p0-TAc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -187,7 +153,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SxD-7L-YEG">
-                                        <rect key="frame" x="0.0" y="232" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SxD-7L-YEG" id="rLy-w9-CDP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -236,10 +202,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cgu" destination="jbo-bh-iTX" id="FdG-VO-hTX"/>
+                        <outlet property="cguSwitch" destination="gxd-wy-4Zf" id="zJb-Yw-HdK"/>
                         <outlet property="doneButton" destination="WR6-eX-gg7" id="swz-kY-N6c"/>
-                        <outlet property="emailInput" destination="iHq-Pb-Qjc" id="aR4-jc-K0N"/>
+                        <outlet property="emailInput" destination="BUB-ph-0bu" id="P1g-cT-0He"/>
                         <outlet property="passwordInput" destination="CKZ-Ks-K2B" id="SsL-IP-gmz"/>
-                        <outlet property="usernameInput" destination="BUB-ph-0bu" id="P1g-cT-0He"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0US-xd-XD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
