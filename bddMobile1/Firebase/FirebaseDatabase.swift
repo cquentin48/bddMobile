@@ -49,7 +49,7 @@ class FirebaseDatabase{
                                   isChecked: rawData.object(forKey: "isChecked") as! Bool,
                                   image: rawData.object(forKey: "image") as! String,
                                   description: rawData.object(forKey: "description") as! String,
-                                  itemList: (rawData.object(forKey: "itemList") != nil) as! [String],
+                                  itemList: (rawData.object(forKey: "itemList") != nil)  as! [String],
                                   id: index)
         return category
     }
