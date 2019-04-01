@@ -15,7 +15,12 @@
 		08160F5D221FEE1000571EA8 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F5C221FEE1000571EA8 /* Categories.swift */; };
 		08160F5F221FF5B600571EA8 /* CategoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */; };
 		08890E5E223F8FE40059D64F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E5D223F8FE40059D64F /* CategoryCell.swift */; };
-		08890E62223FA2950059D64F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08890E61223FA2940059D64F /* GoogleService-Info.plist */; };
+		08890E6A223FB1FA0059D64F /* ConnectionScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08890E69223FB1FA0059D64F /* ConnectionScreen.storyboard */; };
+		08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E6B223FB2AC0059D64F /* ConnectionController.swift */; };
+		08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E6D223FC79C0059D64F /* RegistrationController.swift */; };
+		088A6CCD224100C700778C38 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A6CCC224100C700778C38 /* ModelData.swift */; };
+		0894A854223FC8EE00011F79 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894A853223FC8EE00011F79 /* Profile.swift */; };
+		08A90A46223FF2C800A88084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08A90A45223FF2C800A88084 /* GoogleService-Info.plist */; };
 		08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */; };
 		4264B9BBD52A21F07E10ED33 /* Pods_bddMobile1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0010F5F8D929297E38050A8F /* Pods_bddMobile1.framework */; };
 /* End PBXBuildFile section */
@@ -32,7 +37,12 @@
 		08160F5C221FEE1000571EA8 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListTableViewController.swift; sourceTree = "<group>"; };
 		08890E5D223F8FE40059D64F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		08890E61223FA2940059D64F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		08890E69223FB1FA0059D64F /* ConnectionScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectionScreen.storyboard; sourceTree = "<group>"; };
+		08890E6B223FB2AC0059D64F /* ConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
+		08890E6D223FC79C0059D64F /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		088A6CCC224100C700778C38 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		0894A853223FC8EE00011F79 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		08A90A45223FF2C800A88084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
 		490ABAEA85C9E20F3FB8FBAC /* Pods-bddMobile1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bddMobile1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1.debug.xcconfig"; sourceTree = "<group>"; };
 		DE75D5AA24B491BB3DD8F38B /* Pods-bddMobile1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bddMobile1.release.xcconfig"; path = "Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,12 +81,13 @@
 		08160F45221FE8D200571EA8 /* bddMobile1 */ = {
 			isa = PBXGroup;
 			children = (
+				088A6CCB224100AD00778C38 /* ModelData */,
+				0894A857223FDD2200011F79 /* Ressource */,
 				08E7A00D222001120014283B /* Controller */,
 				08160F59221FED0100571EA8 /* Model */,
 				08160F58221FECE900571EA8 /* View */,
 				08160F46221FE8D200571EA8 /* AppDelegate.swift */,
-				08890E61223FA2940059D64F /* GoogleService-Info.plist */,
-				08160F4D221FE8D300571EA8 /* Assets.xcassets */,
+				08A90A45223FF2C800A88084 /* GoogleService-Info.plist */,
 				08160F52221FE8D300571EA8 /* Info.plist */,
 			);
 			path = bddMobile1;
@@ -87,6 +98,7 @@
 			children = (
 				08160F4A221FE8D200571EA8 /* Main.storyboard */,
 				08160F4F221FE8D300571EA8 /* LaunchScreen.storyboard */,
+				08890E69223FB1FA0059D64F /* ConnectionScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -95,8 +107,25 @@
 			isa = PBXGroup;
 			children = (
 				08160F5C221FEE1000571EA8 /* Categories.swift */,
+				0894A853223FC8EE00011F79 /* Profile.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		088A6CCB224100AD00778C38 /* ModelData */ = {
+			isa = PBXGroup;
+			children = (
+				088A6CCC224100C700778C38 /* ModelData.swift */,
+			);
+			path = ModelData;
+			sourceTree = "<group>";
+		};
+		0894A857223FDD2200011F79 /* Ressource */ = {
+			isa = PBXGroup;
+			children = (
+				08160F4D221FE8D300571EA8 /* Assets.xcassets */,
+			);
+			path = Ressource;
 			sourceTree = "<group>";
 		};
 		08E7A00D222001120014283B /* Controller */ = {
@@ -106,6 +135,8 @@
 				08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */,
 				08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */,
 				08890E5D223F8FE40059D64F /* CategoryCell.swift */,
+				08890E6B223FB2AC0059D64F /* ConnectionController.swift */,
+				08890E6D223FC79C0059D64F /* RegistrationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -139,6 +170,7 @@
 				08160F40221FE8D200571EA8 /* Frameworks */,
 				08160F41221FE8D200571EA8 /* Resources */,
 				2DA08048EAB7111089447969 /* [CP] Embed Pods Frameworks */,
+				231079F928E42173BCFA8AEB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,8 +219,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08890E6A223FB1FA0059D64F /* ConnectionScreen.storyboard in Resources */,
 				08160F51221FE8D300571EA8 /* LaunchScreen.storyboard in Resources */,
-				08890E62223FA2950059D64F /* GoogleService-Info.plist in Resources */,
+				08A90A46223FF2C800A88084 /* GoogleService-Info.plist in Resources */,
 				08160F4E221FE8D300571EA8 /* Assets.xcassets in Resources */,
 				08160F4C221FE8D200571EA8 /* Main.storyboard in Resources */,
 			);
@@ -197,6 +230,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		231079F928E42173BCFA8AEB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseEmailAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseEmailAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2DA08048EAB7111089447969 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,12 +269,34 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,7 +333,11 @@
 				08160F5F221FF5B600571EA8 /* CategoryListTableViewController.swift in Sources */,
 				08160F47221FE8D200571EA8 /* AppDelegate.swift in Sources */,
 				08160F5D221FEE1000571EA8 /* Categories.swift in Sources */,
+				08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */,
 				08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */,
+				08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */,
+				088A6CCD224100C700778C38 /* ModelData.swift in Sources */,
+				0894A854223FC8EE00011F79 /* Profile.swift in Sources */,
 				08890E5E223F8FE40059D64F /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,7 +491,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lpiem.swift.bddMobile1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lpiem.swift.bddMobile.checkList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -418,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lpiem.swift.bddMobile1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lpiem.swift.bddMobile.checkList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

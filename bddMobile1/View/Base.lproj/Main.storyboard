@@ -12,7 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SQW-Ee-4Ep">
             <objects>
-                <navigationController id="S3C-mE-iFY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainScreen" id="S3C-mE-iFY" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="398-un-BLU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -28,7 +28,7 @@
         <!--Category-->
         <scene sceneID="taT-KI-LUK">
             <objects>
-                <tableViewController id="di7-5f-9Ke" customClass="CategoryListTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mainStoryBoardMainViewController" clearsSelectionOnViewWillAppear="NO" id="di7-5f-9Ke" customClass="CategoryListTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" id="Gep-hV-zRH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,12 +170,15 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CxA-0U-bB3">
                                         <rect key="frame" x="0.0" y="172" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CxA-0U-bB3" id="K0Y-KJ-uUR">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CxA-0U-bB3" id="K0Y-KJ-uUR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BVA-vB-RPp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="CLh-vn-mqz"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
