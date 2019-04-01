@@ -25,12 +25,14 @@ class RegistrationController: UITableViewController, UIImagePickerControllerDele
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var cgu: UILabel!
+    private var cguAccepted:Bool = false
     
-    @IBOutlet weak var avatarImage: UIImageView!
     @IBAction func onAcceptCGUSwitchStateValueChanged(_ sender: Any) {
+        let switchCGU = sender as! UISwitch
+        cguAccepted = switchCGU.isOn
+        changeEnableStatusForDoneButton()
     }
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         cgu.text = "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker."
@@ -46,12 +48,6 @@ class RegistrationController: UITableViewController, UIImagePickerControllerDele
         delegate?.didCancel(self)
     }
     
-    func imageOnClickListener(){
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(loadImage(tapGestureRecognizer:)))
-        avatarImage.isUserInteractionEnabled = true
-        avatarImage.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
     @IBAction func usernameInputChanged(_ sender: Any) {
         changeEnableStatusForDoneButton()
     }
@@ -63,19 +59,6 @@ class RegistrationController: UITableViewController, UIImagePickerControllerDele
     @IBAction func emailInputChanged(_ sender: Any) {
         changeEnableStatusForDoneButton()
     }
-    @objc func loadImage(tapGestureRecognizer: UITapGestureRecognizer) {
-        print("Image tapped")
-        /*let action_sheet_vc = UIAlertController(title: "Choisir d'une image", message: "Choisir une image pour son avatar", preferredStyle: .actionSheet)
-        let camera = UIAlertAction(title: "Caméra", style: .default, handler: camera_action)
-        let gallery = UIAlertAction(title: "Gallerie", style: .default, handler: gallery_action)
-        let cancel = UIAlertAction(title: "Annuler", style: .default, handler: nil)
-        
-        action_sheet_vc.addAction(camera)
-        action_sheet_vc.addAction(gallery)
-        action_sheet_vc.addAction(cancel)
-        
-        self.present(action_sheet_vc,animated: true, completion: nil)*/
-    }
     
     private func camera_action(action: UIAlertAction){
         
@@ -86,12 +69,13 @@ class RegistrationController: UITableViewController, UIImagePickerControllerDele
     }
     
     private func changeEnableStatusForDoneButton(){
-        doneButton.isEnabled = checkStatusForInput(input: usernameInput) || checkStatusForInput(input: emailInput) || checkStatusForInput(input: passwordInput)
+        doneButton.isEnabled = (checkStatusForInput(input: usernameInput) || checkStatusForInput(input: emailInput) || checkStatusForInput(input: passwordInput)) && (cguAccepted)
     }
     
     private func checkStatusForInput(input:UITextField)->Bool{
         return !(input.text == "" || input.text == nil)
     }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
