@@ -19,14 +19,27 @@ class FirebaseDatabase{
     }
     
     func addCategories(category:Categories, position:Int){
-        let ref = db.child("users").child(Auth.auth().currentUser!.uid).ref
-        let id = String(position)
-        ref.child("collection").child(id).setValue([
-            "title" : category.title,
-            "checked" : category.isChecked,
-            "image" : category.image,
-            "description" : category.description,
-            "itemList" : category.itemList
-            ])
+        let ref = db.child("collection").child(Auth.auth().currentUser!.uid).ref
+        let categoryRef = ref.childByAutoId()
+            categoryRef.setValue([
+            "title" : category.title!,
+            "isChecked" : category.isChecked,
+            "image" : category.image!,
+            "description" : category.description!,
+            "authorId" : Auth.auth().currentUser?.uid
+//            "itemList" : category.itemList
+        ]) { (error) in
+            print("There was an error getting posts", error)
+        }
+        category.id = categoryRef.key!
+    }
+    
+    func loadAllCategories(){
+        let ref = db.child("users").child(Auth.auth().currentUser!.uid).child("collection").ref
+        ref.observe(.value, with: {(snapshot) in
+            /*snapshot.value as! [String:Any]*/
+        }) {(error) in
+            print("Error : ", error)
+        }
     }
 }

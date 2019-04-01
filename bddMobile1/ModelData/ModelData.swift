@@ -52,7 +52,11 @@ class ModelData{
         })
     }
     
-    func loadChecklistItems(){
+    func loadFromFirebase(){
+        firebaseCloudFirestore.loadAllCategories()
+    }
+    
+    /*func loadChecklistItems(){
         print("Chargement des items")
         do{
             let importedData = try Data(contentsOf: ModelData.dataFileUrl)
@@ -62,5 +66,5 @@ class ModelData{
             
         }
         dump(categories)
-    }
+    }*/
 }

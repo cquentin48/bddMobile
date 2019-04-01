@@ -85,7 +85,7 @@ class ConnectionController: UIViewController {
     }
     
     func loadCheckListData(){
-        modelData.loadChecklistItems()
+        modelData.loadFromFirebase()
     }
     
     private func displayToast(message:String){
