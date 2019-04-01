@@ -16,8 +16,7 @@ target 'bddMobile1' do
  pod 'FirebaseUI/Twitter'
  pod 'FirebaseUI/Phone'
  pod 'MaterialComponents/Buttons'
- pod 'MBProgressHUD', '~> 1.1.0'
- pod 'FireStore'
- pod 'Firebase/Core', '~> 5.12.0'
- pod 'Firebase/Firestore', '~> 5.12.0'
+ pod 'MBProgressHUD'
+ pod 'Firebase/Core'
+ pod 'Firebase/Database'
 end

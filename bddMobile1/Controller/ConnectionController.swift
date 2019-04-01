@@ -73,7 +73,6 @@ class ConnectionController: UIViewController {
             print("Error : \(error.debugDescription)")
         }else{
             displayToast(message: "Connection réussie!")
-            firebaseCloudFirestore.initUserDatabase(userId: Auth.auth().currentUser!.uid)
             loadCheckListData()
             goToMainStoryboard()
         }
