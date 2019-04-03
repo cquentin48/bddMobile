@@ -11,6 +11,8 @@ import Firebase
 let firebaseCloudFirestore = FirebaseDatabase()
 class FirebaseDatabase{
     var db: DatabaseReference! = Database.database().reference()
+    var elementLoaded:Bool = false
+    private var collectionRef:DatabaseReference
     
     func saveCategories(){
         modelData.categories!.enumerated().map{ (index, singleCategory) in
@@ -18,10 +20,13 @@ class FirebaseDatabase{
         }
     }
     
+    required init() {
+        collectionRef = db.child("collection").ref
+    }
+    
     func addCategories(category:Categories, position:Int){
-        let ref = db.child("collection").ref
-        category.id = (ref.childByAutoId()).key!
-        let categoryRef = ref.child(category.id).setValue([
+        category.id = (collectionRef.childByAutoId()).key!
+        let categoryRef = collectionRef.child(category.id).setValue([
             "title" : category.title,
             "description" : category.description,
             "image" : category.image,
@@ -31,13 +36,26 @@ class FirebaseDatabase{
         ])
     }
     
+    func removeCategories(key:String){
+        let elementRef = collectionRef.child(key)
+        elementRef.removeValue{ error, _ in
+            if(error != nil){
+                print("Catégorie supprimée")
+            }else{
+                print("Error"+error.debugDescription)
+            }
+        }
+    }
+    
     func loadAllCategories(){
-        let ref = db.child("collection").ref
-        ref.observe(.value, with: {(snapshot) in
+        collectionRef.observe(.value, with: {(snapshot) in
             let categories = snapshot.value as? NSDictionary
             let categoriesKey = categories?.allKeys as! Array<String>
             categoriesKey.map{(singleKey) in
-                self.addCategoryToList(rawData: categories?.object(forKey: singleKey) as! NSDictionary, index: singleKey)
+               modelData.categories?.append(self.addCategoryToList(rawData: categories?.object(forKey: singleKey) as! NSDictionary, index: singleKey))
+                if(modelData.categories?.count == categories?.count){
+                    self.elementLoaded = true
+                }
             }
         }) {(error) in
             print("Error : ", error)
@@ -49,8 +67,8 @@ class FirebaseDatabase{
                                   isChecked: rawData.object(forKey: "isChecked") as! Bool,
                                   image: rawData.object(forKey: "image") as! String,
                                   description: rawData.object(forKey: "description") as! String,
-                                  itemList: (rawData.object(forKey: "itemList") != nil)  as! [String],
-                                  id: index)
+                                  id: index,
+                                  authorId: rawData.object(forKey: "authorId") as! String)
         return category
     }
 }

@@ -26,6 +26,7 @@ class CategoryListTableViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSearchController()
+        print("Taille tableau :")
     }
     
     func initSearchController(){
@@ -75,19 +76,25 @@ class CategoryListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if(isFiltering()){
-            return modelData.filteredCategories!.count
+        if(firebaseCloudFirestore.elementLoaded){
+            if(isFiltering()){
+                return modelData.filteredCategories!.count
+            }else{
+                return modelData.categories!.count
+            }
         }else{
-            return modelData.categories!.count
+            return 0
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath) as! CategoryCell
-        if(isFiltering()){
-            cell.initCell(categoryName: modelData.filteredCategories![indexPath.row].title!, isChecked: false)
-        }else{
-            cell.initCell(categoryName: modelData.categories![indexPath.row].title!, isChecked: false)
+        if(firebaseCloudFirestore.elementLoaded){
+            if(isFiltering()){
+                cell.initCell(categoryName: modelData.filteredCategories![indexPath.row].title!, isChecked: false)
+            }else{
+                cell.initCell(categoryName: modelData.categories![indexPath.row].title!, isChecked: false)
+            }
         }
         return cell
     }
@@ -97,6 +104,7 @@ class CategoryListTableViewController: UITableViewController {
             modelData.categories?.remove(at: indexPath.row)
             table.deleteRows(at: [indexPath], with: .automatic)
             modelData.saveChecklistItems()
+            firebaseCloudFirestore.removeCategories(key: modelData.categories![indexPath.row].id)
         }
     }
 }

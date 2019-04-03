@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 protocol ItemDetailViewControllerDelegate : class {
     func itemViewControllerDidCancel(_ controller: ItemDetailTableViewController)
     func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishAddingItem item: Categories)
@@ -60,9 +61,9 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
     @IBAction func onDoneAction(_ sender: Any) {
         delegate?.itemViewControllerDidCancel(self)
         if(item == nil){
-            delegate?.itemDetailViewController(self, didFinishAddingItem: Categories(title: titleInput.text!, isChecked: false, description: categoryDescription.text))
+            delegate?.itemDetailViewController(self, didFinishAddingItem: Categories(title: titleInput.text!, isChecked: false, description: categoryDescription.text, authorId : Auth.auth().currentUser!.uid))
         }else{
-            delegate?.itemDetailViewController(self, didFinishEditingItem: Categories(title: titleInput.text!, isChecked: false, description: categoryDescription.text), indexAt: index!)
+            delegate?.itemDetailViewController(self, didFinishEditingItem: Categories(title: titleInput.text!, isChecked: false, description: categoryDescription.text, authorId : Auth.auth().currentUser!.uid), indexAt: index!)
         }
     }
     
