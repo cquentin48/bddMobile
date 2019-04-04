@@ -21,7 +21,7 @@ class FirebaseDatabase{
     }
     
     required init() {
-        collectionRef = db.child("collection").ref
+        collectionRef = db.child("collection")
     }
     
     func addCategories(category:Categories, position:Int){
@@ -47,8 +47,8 @@ class FirebaseDatabase{
         }
     }
     
-    func loadAllCategories(){
-        collectionRef.observe(.value, with: {(snapshot) in
+    func loadAllCategories(tableView : UITableView){
+        collectionRef.queryOrdered(byChild: "authorId").queryEqual(toValue: Auth.auth().currentUser?.uid).observe(.value, with: {(snapshot) in
             let categories = snapshot.value as? NSDictionary
             let categoriesKey = categories?.allKeys as! Array<String>
             categoriesKey.map{(singleKey) in
@@ -57,9 +57,15 @@ class FirebaseDatabase{
                     self.elementLoaded = true
                 }
             }
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
         }) {(error) in
             print("Error : ", error)
         }
+    }
+    
+    func loadDataIntoTable(tableView: UITableView){
     }
     
     func addCategoryToList(rawData:NSDictionary, index:String)->Categories{

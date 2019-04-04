@@ -73,7 +73,6 @@ class ConnectionController: UIViewController {
             print("Error : \(error.debugDescription)")
         }else{
             displayToast(message: "Connection réussie!")
-            loadCheckListData()
             goToMainStoryboard()
         }
     }
@@ -82,10 +81,6 @@ class ConnectionController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! UINavigationController
         present(vc, animated: true, completion: nil)
-    }
-    
-    func loadCheckListData(){
-        modelData.loadFromFirebase()
     }
     
     private func displayToast(message:String){

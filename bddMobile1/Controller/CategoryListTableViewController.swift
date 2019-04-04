@@ -15,6 +15,7 @@ class CategoryListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchController()
+        loadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,7 +27,10 @@ class CategoryListTableViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSearchController()
-        print("Taille tableau :")
+    }
+    
+    func loadData(){
+        modelData.loadFromFirebase(tableView: table)
     }
     
     func initSearchController(){
@@ -75,21 +79,16 @@ class CategoryListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if(firebaseCloudFirestore.elementLoaded){
-            if(isFiltering()){
-                return modelData.filteredCategories!.count
-            }else{
-                return modelData.categories!.count
-            }
+        if(isFiltering()){
+            return modelData.filteredCategories!.count
         }else{
-            return 0
+            return modelData.categories!.count
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath) as! CategoryCell
-        if(firebaseCloudFirestore.elementLoaded){
+        if(modelData.categories!.count>0){
             if(isFiltering()){
                 cell.initCell(categoryName: modelData.filteredCategories![indexPath.row].title!, isChecked: false)
             }else{

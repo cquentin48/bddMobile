@@ -52,8 +52,8 @@ class ModelData{
         })
     }
     
-    func loadFromFirebase(){
-        firebaseCloudFirestore.loadAllCategories()
+    func loadFromFirebase(tableView: UITableView){
+        firebaseCloudFirestore.loadAllCategories(tableView: tableView)
     }
     
     /*func loadChecklistItems(){
