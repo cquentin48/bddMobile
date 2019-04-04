@@ -87,7 +87,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dataView" destination="Gep-hV-zRH" id="mjF-wJ-8Ks"/>
                         <outlet property="searchDisplayController" destination="lU8-62-uY9" id="4oq-KX-fbu"/>
                         <outlet property="table" destination="Gep-hV-zRH" id="vgV-B2-T50"/>
                     </connections>

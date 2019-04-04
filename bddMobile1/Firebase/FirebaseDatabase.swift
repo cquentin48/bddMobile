@@ -48,6 +48,7 @@ class FirebaseDatabase{
     }
     
     func loadAllCategories(tableView : UITableView){
+        modelData.categories = [Categories]()
         collectionRef.queryOrdered(byChild: "authorId").queryEqual(toValue: Auth.auth().currentUser?.uid).observe(.value, with: {(snapshot) in
             let categories = snapshot.value as? NSDictionary
             let categoriesKey = categories?.allKeys as! Array<String>
