@@ -20,6 +20,7 @@
 		08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E6D223FC79C0059D64F /* RegistrationController.swift */; };
 		088A6CCD224100C700778C38 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A6CCC224100C700778C38 /* ModelData.swift */; };
 		0894A854223FC8EE00011F79 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894A853223FC8EE00011F79 /* Profile.swift */; };
+		08A33413225B650F006A13A5 /* ToDoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A33412225B650F006A13A5 /* ToDoController.swift */; };
 		08A90A46223FF2C800A88084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08A90A45223FF2C800A88084 /* GoogleService-Info.plist */; };
 		08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */; };
 		08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */; };
@@ -43,6 +44,7 @@
 		08890E6D223FC79C0059D64F /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		088A6CCC224100C700778C38 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		0894A853223FC8EE00011F79 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		08A33412225B650F006A13A5 /* ToDoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoController.swift; sourceTree = "<group>"; };
 		08A90A45223FF2C800A88084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
 		08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				08890E5D223F8FE40059D64F /* CategoryCell.swift */,
 				08890E6B223FB2AC0059D64F /* ConnectionController.swift */,
 				08890E6D223FC79C0059D64F /* RegistrationController.swift */,
+				08A33412225B650F006A13A5 /* ToDoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				08160F47221FE8D200571EA8 /* AppDelegate.swift in Sources */,
 				08160F5D221FEE1000571EA8 /* Categories.swift in Sources */,
 				08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */,
+				08A33413225B650F006A13A5 /* ToDoController.swift in Sources */,
 				08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */,
 				08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */,
 				08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */,

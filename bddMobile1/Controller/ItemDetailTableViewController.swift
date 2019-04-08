@@ -24,6 +24,7 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var itemList: UITableViewCell!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var itemCount: UILabel!
     
     
     override func viewDidLoad() {
@@ -38,6 +39,15 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
         titleInput.becomeFirstResponder()
         initDoneButton()
         addDelegateForTextInput()
+        initToDoListCategory()
+    }
+    
+    func initToDoListCategory(){
+        if(item?.itemList == nil){
+            itemCount.text = "0"
+        }else{
+            itemCount.text = String(item!.itemList!.count)
+        }
     }
     
     func addDelegateForTextInput(){
@@ -56,6 +66,14 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
     func initSize(){
         /*let newSize = categoryDescription.sizeThatFits(CGSize(width: categoryDescription.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
         categoryDescription.frame.size = categoryDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))*/
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "access_to_object_list"){
+            /*let navVC = segue.destination as! UINavigationController
+            let destVC = navVC.viewControllers.first as! ItemDetailTableViewController
+            destVC.delegate = self*/
+        }
     }
     
     @IBAction func onDoneAction(_ sender: Any) {
