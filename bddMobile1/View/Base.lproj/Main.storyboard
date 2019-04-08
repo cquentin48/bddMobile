@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S3C-mE-iFY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S3C-mE-iFY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -65,7 +65,6 @@
                                 <connections>
                                     <outlet property="categoryCellTextView" destination="2s6-Ga-w12" id="fmQ-WA-wMt"/>
                                     <outlet property="categoryIsChecked" destination="g0z-lm-6ei" id="OiR-kc-c8x"/>
-                                    <segue destination="tUN-cN-Qc1" kind="presentation" identifier="showItem" id="wxe-Xg-rXD"/>
                                     <segue destination="tUN-cN-Qc1" kind="presentation" identifier="editItem" trigger="accessoryAction" id="Jvq-NX-juw"/>
                                 </connections>
                             </tableViewCell>
@@ -251,6 +250,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wxe-Xg-rXD"/>
+        <segue reference="Jvq-NX-juw"/>
     </inferredMetricsTieBreakers>
 </document>

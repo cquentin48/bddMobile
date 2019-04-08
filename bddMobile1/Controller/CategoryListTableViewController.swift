@@ -15,6 +15,7 @@ class CategoryListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchController()
+        loadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,6 +27,10 @@ class CategoryListTableViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSearchController()
+    }
+    
+    func loadData(){
+        modelData.loadFromFirebase(tableView: table)
     }
     
     func initSearchController(){
@@ -74,7 +79,6 @@ class CategoryListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if(isFiltering()){
             return modelData.filteredCategories!.count
         }else{
@@ -84,10 +88,12 @@ class CategoryListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCellIdentifier", for: indexPath) as! CategoryCell
-        if(isFiltering()){
-            cell.initCell(categoryName: modelData.filteredCategories![indexPath.row].title!, isChecked: false)
-        }else{
-            cell.initCell(categoryName: modelData.categories![indexPath.row].title!, isChecked: false)
+        if(modelData.categories!.count>0){
+            if(isFiltering()){
+                cell.initCell(categoryName: modelData.filteredCategories![indexPath.row].title!, isChecked: false)
+            }else{
+                cell.initCell(categoryName: modelData.categories![indexPath.row].title!, isChecked: false)
+            }
         }
         return cell
     }
@@ -97,6 +103,7 @@ class CategoryListTableViewController: UITableViewController {
             modelData.categories?.remove(at: indexPath.row)
             table.deleteRows(at: [indexPath], with: .automatic)
             modelData.saveChecklistItems()
+            firebaseCloudFirestore.removeCategories(key: modelData.categories![indexPath.row].id)
         }
     }
 }
@@ -133,6 +140,6 @@ extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
         table.reloadRows(at: [IndexPath(row: indexAt, section: 0)], with: .automatic)
         table.endUpdates()
         modelData.saveChecklistItems()
-        dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -22,6 +22,7 @@
 		0894A854223FC8EE00011F79 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894A853223FC8EE00011F79 /* Profile.swift */; };
 		08A90A46223FF2C800A88084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08A90A45223FF2C800A88084 /* GoogleService-Info.plist */; };
 		08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */; };
+		08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */; };
 		4264B9BBD52A21F07E10ED33 /* Pods_bddMobile1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0010F5F8D929297E38050A8F /* Pods_bddMobile1.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		0894A853223FC8EE00011F79 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		08A90A45223FF2C800A88084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
+		08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
 		490ABAEA85C9E20F3FB8FBAC /* Pods-bddMobile1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bddMobile1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1.debug.xcconfig"; sourceTree = "<group>"; };
 		DE75D5AA24B491BB3DD8F38B /* Pods-bddMobile1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bddMobile1.release.xcconfig"; path = "Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 		08160F45221FE8D200571EA8 /* bddMobile1 */ = {
 			isa = PBXGroup;
 			children = (
+				08FDFB9F225215FC0032C2C8 /* Firebase */,
 				088A6CCB224100AD00778C38 /* ModelData */,
 				0894A857223FDD2200011F79 /* Ressource */,
 				08E7A00D222001120014283B /* Controller */,
@@ -139,6 +142,14 @@
 				08890E6D223FC79C0059D64F /* RegistrationController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		08FDFB9F225215FC0032C2C8 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		ADB7C50BAE78574A6E612CDB /* Frameworks */ = {
@@ -281,6 +292,7 @@
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -297,6 +309,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +346,7 @@
 				08160F5F221FF5B600571EA8 /* CategoryListTableViewController.swift in Sources */,
 				08160F47221FE8D200571EA8 /* AppDelegate.swift in Sources */,
 				08160F5D221FEE1000571EA8 /* Categories.swift in Sources */,
+				08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */,
 				08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */,
 				08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */,
 				08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */,

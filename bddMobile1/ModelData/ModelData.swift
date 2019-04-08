@@ -27,6 +27,11 @@ class ModelData{
     }
     
     func saveChecklistItems(){
+        savetoJSON()
+        exportToFirebaseDatabase()
+    }
+    
+    func savetoJSON(){
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -37,13 +42,26 @@ class ModelData{
         catch{}
     }
     
+    func exportToFirebaseDatabase(){
+        firebaseCloudFirestore.saveCategories()
+    }
+    
     func filterData(_ searchController:UISearchController){
         filteredCategories = categories!.filter({( category : Categories) -> Bool in
             return category.title!.lowercased().contains(searchController.searchBar.text!.lowercased())
         })
     }
     
-    func loadChecklistItems(){
+    func loadFromFirebase(tableView: UITableView){
+        firebaseCloudFirestore.loadAllCategories(tableView: tableView)
+    }
+    
+    func removeCategoryFromFirebase(tableView: UITableView, key:Int){
+        firebaseCloudFirestore.removeCategory(tableView: tableView, key: self.categories![key].id)
+        categories?.remove(at: key)
+    }
+    
+    /*func loadChecklistItems(){
         print("Chargement des items")
         do{
             let importedData = try Data(contentsOf: ModelData.dataFileUrl)
@@ -53,5 +71,5 @@ class ModelData{
             
         }
         dump(categories)
-    }
+    }*/
 }

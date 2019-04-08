@@ -7,6 +7,7 @@ target 'bddMobile1' do
 
   # Pods for bddMobile1
  pod 'Firebase/Core'
+ pod 'Firebase/Database'
  pod 'FirebaseUI/Auth'
  pod 'GoogleSignIn'
  pod 'FirebaseUI/Email'
@@ -15,5 +16,7 @@ target 'bddMobile1' do
  pod 'FirebaseUI/Twitter'
  pod 'FirebaseUI/Phone'
  pod 'MaterialComponents/Buttons'
- pod 'MBProgressHUD', '~> 1.1.0'
+ pod 'MBProgressHUD'
+ pod 'Firebase/Core'
+ pod 'Firebase/Database'
 end
