@@ -61,12 +61,14 @@ class FirebaseDatabase{
             DispatchQueue.main.async {
                 tableView.reloadData()
             }
+            self.collectionRef.removeAllObservers()
         }) {(error) in
             print("Error : ", error)
         }
     }
     
-    func loadDataIntoTable(tableView: UITableView){
+    func removeCategory(tableView: UITableView, key:String){
+        collectionRef.child(key).removeValue()
     }
     
     func addCategoryToList(rawData:NSDictionary, index:String)->Categories{

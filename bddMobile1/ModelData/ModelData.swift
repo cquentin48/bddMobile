@@ -56,6 +56,11 @@ class ModelData{
         firebaseCloudFirestore.loadAllCategories(tableView: tableView)
     }
     
+    func removeCategoryFromFirebase(tableView: UITableView, key:Int){
+        firebaseCloudFirestore.removeCategory(tableView: tableView, key: self.categories![key].id)
+        categories?.remove(at: key)
+    }
+    
     /*func loadChecklistItems(){
         print("Chargement des items")
         do{
