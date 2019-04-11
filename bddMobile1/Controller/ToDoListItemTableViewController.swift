@@ -37,6 +37,14 @@ class ToDoListItemTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.description == "addItem"){
+            let navVC = segue.destination as! UINavigationController
+            let destVC = navVC.viewControllers.first as! ToDoController
+            destVC.delegate = self
+        }
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,4 +101,16 @@ class ToDoListItemTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension ToDoListItemTableViewController:ToDoDelegate{
+    func didAddItem(_ controller: ToDoController, itemAdded: ToDoItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func cancel(_ controller: ToDoController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }

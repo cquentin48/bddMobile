@@ -283,7 +283,7 @@
         <scene sceneID="VmI-BK-xld">
             <objects>
                 <tableViewController id="60U-bT-4wL" customClass="ToDoController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8RT-iX-n4b">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8RT-iX-n4b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -484,8 +484,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Nouvel élément" id="A4l-7R-0co">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tvJ-hf-T46"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KJZ-IU-hOY"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tvJ-hf-T46">
+                            <connections>
+                                <action selector="onCancelAction:" destination="60U-bT-4wL" id="QPN-XL-xep"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KJZ-IU-hOY">
+                            <connections>
+                                <action selector="onDoneAction:" destination="60U-bT-4wL" id="bVN-va-XgU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="categoriesPickerView" destination="k7s-7B-fHj" id="adR-sF-xhW"/>
@@ -503,7 +511,7 @@
         <!--Liste des objets-->
         <scene sceneID="gla-7z-XPb">
             <objects>
-                <tableViewController id="LTa-Um-rJW" sceneMemberID="viewController">
+                <tableViewController id="LTa-Um-rJW" customClass="ToDoItemListCell" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bY4-ef-OJy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

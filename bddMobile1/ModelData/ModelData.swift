@@ -26,6 +26,14 @@ class ModelData{
         print("Data adresse : "+ModelData.dataFileUrl.absoluteString)
     }
     
+    func loadCategoryTitles()->Array<String>{
+        var categoryList = Array<String>()
+        categories!.forEach { (category) in
+            categoryList.append(category.title!)
+        }
+        return categoryList
+    }
+    
     func saveChecklistItems(){
         //savetoJSON()
         exportToFirebaseDatabase()
