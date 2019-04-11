@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol ToDoDelegate{
+    func didAddItem(_ controller:ToDoController, itemAdded:ToDoItem)
+    
+    func cancel(_ controller: ToDoController)
+}
+
 class ToDoController: UITableViewController {
 
     @IBOutlet weak var reminderTitle: UITextField!
@@ -16,6 +22,9 @@ class ToDoController: UITableViewController {
     @IBOutlet weak var reminderDate: UIDatePicker!
     @IBOutlet weak var creationDateLabel: UILabel!
     @IBOutlet weak var lastModificationDateLabel: UILabel!
+    
+    private var toDoObjectId:Int = -1
+    private var toDoCategoryList:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,69 +35,20 @@ class ToDoController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    private func initElements(){
+        if(!isNotCreated()){
+            reminderTitle.text = modelData.categories![toDoCategoryList].itemList![toDoObjectId].toDoName
+            reminderDescription.text = modelData.categories![toDoCategoryList].itemList![toDoObjectId].toDoDescription
+            creationDateLabel.text = modelData.categories![toDoCategoryList].itemList![toDoObjectId].toDoCreationDate
+        }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    private func formatDate()->String{
+        let dateTimeFormatter = DateFormatter()
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        //if(indexPath.section == 3 && )
-
-        return cell
+    
+    private func isNotCreated() ->Bool{
+        return toDoObjectId == -1
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

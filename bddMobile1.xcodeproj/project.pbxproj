@@ -14,6 +14,9 @@
 		08160F51221FE8D300571EA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08160F4F221FE8D300571EA8 /* LaunchScreen.storyboard */; };
 		08160F5D221FEE1000571EA8 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F5C221FEE1000571EA8 /* Categories.swift */; };
 		08160F5F221FF5B600571EA8 /* CategoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */; };
+		0844624E225C6BC40062D6F9 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844624D225C6BC40062D6F9 /* ToDoItem.swift */; };
+		08446250225C6D920062D6F9 /* ToDoListItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844624F225C6D920062D6F9 /* ToDoListItemTableViewController.swift */; };
+		08446252225C6ED90062D6F9 /* ToDoListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08446251225C6ED90062D6F9 /* ToDoListItemCell.swift */; };
 		08890E5E223F8FE40059D64F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E5D223F8FE40059D64F /* CategoryCell.swift */; };
 		08890E6A223FB1FA0059D64F /* ConnectionScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08890E69223FB1FA0059D64F /* ConnectionScreen.storyboard */; };
 		08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E6B223FB2AC0059D64F /* ConnectionController.swift */; };
@@ -38,6 +41,9 @@
 		08160F52221FE8D300571EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08160F5C221FEE1000571EA8 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListTableViewController.swift; sourceTree = "<group>"; };
+		0844624D225C6BC40062D6F9 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		0844624F225C6D920062D6F9 /* ToDoListItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemTableViewController.swift; sourceTree = "<group>"; };
+		08446251225C6ED90062D6F9 /* ToDoListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemCell.swift; sourceTree = "<group>"; };
 		08890E5D223F8FE40059D64F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		08890E69223FB1FA0059D64F /* ConnectionScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectionScreen.storyboard; sourceTree = "<group>"; };
 		08890E6B223FB2AC0059D64F /* ConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 			children = (
 				08160F5C221FEE1000571EA8 /* Categories.swift */,
 				0894A853223FC8EE00011F79 /* Profile.swift */,
+				0844624D225C6BC40062D6F9 /* ToDoItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +150,8 @@
 				08890E6B223FB2AC0059D64F /* ConnectionController.swift */,
 				08890E6D223FC79C0059D64F /* RegistrationController.swift */,
 				08A33412225B650F006A13A5 /* ToDoController.swift */,
+				0844624F225C6D920062D6F9 /* ToDoListItemTableViewController.swift */,
+				08446251225C6ED90062D6F9 /* ToDoListItemCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -354,6 +363,9 @@
 				08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */,
 				08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */,
 				08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */,
+				0844624E225C6BC40062D6F9 /* ToDoItem.swift in Sources */,
+				08446252225C6ED90062D6F9 /* ToDoListItemCell.swift in Sources */,
+				08446250225C6D920062D6F9 /* ToDoListItemTableViewController.swift in Sources */,
 				088A6CCD224100C700778C38 /* ModelData.swift in Sources */,
 				0894A854223FC8EE00011F79 /* Profile.swift in Sources */,
 				08890E5E223F8FE40059D64F /* CategoryCell.swift in Sources */,

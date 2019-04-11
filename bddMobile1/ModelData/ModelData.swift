@@ -27,11 +27,11 @@ class ModelData{
     }
     
     func saveChecklistItems(){
-        savetoJSON()
+        //savetoJSON()
         exportToFirebaseDatabase()
     }
     
-    func savetoJSON(){
+    /*func savetoJSON(){
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -40,7 +40,7 @@ class ModelData{
             try jsonData.write(to: ModelData.dataFileUrl)
         }
         catch{}
-    }
+    }*/
     
     func exportToFirebaseDatabase(){
         firebaseCloudFirestore.saveCategories()
