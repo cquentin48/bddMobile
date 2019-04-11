@@ -10,6 +10,9 @@ import UIKit
 
 class ToDoListItemCell: UITableViewCell {
     
+    @IBOutlet weak var isChecked: UILabel!
+    @IBOutlet weak var categoryTitle: UILabel!
+    @IBOutlet weak var imageIcon: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

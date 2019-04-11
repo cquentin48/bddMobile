@@ -39,13 +39,12 @@ class ToDoController: UITableViewController {
     private func initElements(){
         if(!isNotCreated()){
             reminderTitle.text = modelData.categories![toDoCategoryList].itemList![toDoObjectId].toDoName
-            reminderDescription.text = modelData.categories![toDoCategoryList].itemList![toDoObjectId].toDoDescription
-            creationDateLabel.text = modelData.categories![toDoCategoryList].itemList![toDoObjectId].toDoCreationDate
         }
     }
     
     private func formatDate()->String{
-        let dateTimeFormatter = DateFormatter()
+        //let dateTimeFormatter = DateFormatter()
+        return ""
     }
     
     private func isNotCreated() ->Bool{

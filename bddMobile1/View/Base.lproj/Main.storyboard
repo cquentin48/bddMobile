@@ -219,11 +219,6 @@
                                                 <constraint firstItem="7fv-Qb-O0z" firstAttribute="centerY" secondItem="rSV-9X-Z5M" secondAttribute="centerY" id="zc5-e7-gBu"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="wxw-tD-sAT" kind="popoverPresentation" identifier="showListItem" trigger="accessoryAction" popoverAnchorView="dcm-GB-BYr" id="MXd-JP-An9">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pr7-9V-exl">
                                         <rect key="frame" x="0.0" y="288" width="375" height="44"/>
@@ -235,6 +230,11 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-Us-gZl">
                                                     <rect key="frame" x="10" y="7" width="355" height="30"/>
                                                     <state key="normal" title="Accéder à la liste des objectifs"/>
+                                                    <connections>
+                                                        <segue destination="wxw-tD-sAT" kind="popoverPresentation" identifier="itemList" popoverAnchorView="MeW-Us-gZl" id="sdl-5h-oc1">
+                                                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                        </segue>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -509,7 +509,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="AE5-bo-mPq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="AE5-bo-mPq" customClass="ToDoListItemCell" customModule="bddMobile1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AE5-bo-mPq" id="KbL-lg-CTB">
@@ -549,6 +549,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="categoryTitle" destination="nPX-el-MzQ" id="AbJ-FY-iWd"/>
+                                    <outlet property="imageIcon" destination="DiR-hE-df3" id="oET-oY-ena"/>
+                                    <outlet property="isChecked" destination="dVG-Zk-eZE" id="iOy-71-2TA"/>
                                     <segue destination="UmV-M4-Tjg" kind="popoverPresentation" identifier="showItem" trigger="accessoryAction" popoverAnchorView="AE5-bo-mPq" id="eqA-pK-K9h">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
@@ -560,7 +563,13 @@
                             <outlet property="delegate" destination="LTa-Um-rJW" id="Kon-rF-LcU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Liste des objets" id="c6H-Vs-GyH"/>
+                    <navigationItem key="navigationItem" title="Liste des objets" id="c6H-Vs-GyH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Arm-LD-TIA">
+                            <connections>
+                                <segue destination="UmV-M4-Tjg" kind="showDetail" identifier="addItem" id="lpg-iP-O4s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dms-rq-Ju2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -617,5 +626,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Jvq-NX-juw"/>
+        <segue reference="lpg-iP-O4s"/>
     </inferredMetricsTieBreakers>
 </document>
