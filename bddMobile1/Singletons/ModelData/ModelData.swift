@@ -9,8 +9,12 @@
 import UIKit
 let modelData = ModelData()
 class ModelData{
+    //Catégories
     var categories:[Categories]?
     var filteredCategories:[Categories]?
+    
+    //ToDoItem
+    var filteredToDoItem:[ToDoItem]?
     
     static var documentDirectory:URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -27,6 +31,7 @@ class ModelData{
     required init() {
         categories = [Categories]()
         filteredCategories = [Categories]()
+        filteredToDoItem = [ToDoItem]()
         print("Data adresse : "+ModelData.dataFileUrl.absoluteString)
     }
     
@@ -61,6 +66,12 @@ class ModelData{
     func filterData(_ searchController:UISearchController){
         filteredCategories = categories!.filter({( category : Categories) -> Bool in
             return category.title!.lowercased().contains(searchController.searchBar.text!.lowercased())
+        })
+    }
+    
+    func filterToDoItem(_ searchController:UISearchController, categoryId:Int){
+        filteredToDoItem = categories![categoryId].itemList!.filter({( toDoItem : ToDoItem) -> Bool in
+            return toDoItem.toDoName.lowercased().contains(searchController.searchBar.text!.lowercased())
         })
     }
     

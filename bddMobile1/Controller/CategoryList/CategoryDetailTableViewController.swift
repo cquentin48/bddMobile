@@ -94,5 +94,6 @@ class CategoryDetailTableViewController: UITableViewController, UITextFieldDeleg
 extension CategoryDetailTableViewController:ToDoListItemDelegate{
     func cancel(_ controller: ToDoListItemTableViewController) {
         dismiss(animated: true, completion: nil)
+        itemCount.text = String(item!.itemList!.count)
     }
 }

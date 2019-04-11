@@ -10,7 +10,7 @@ import UIKit
 
 class ToDoListItemCell: UITableViewCell {
     
-    @IBOutlet weak var isChecked: UILabel!
+    @IBOutlet weak var isCheckedLabel: UILabel!
     @IBOutlet weak var categoryTitle: UILabel!
     @IBOutlet weak var imageIcon: UIImageView!
     override func awakeFromNib() {
@@ -23,10 +23,22 @@ class ToDoListItemCell: UITableViewCell {
         
     }
     
-    private func updateSelectedLabel(){
-        if(isSelected){
-            
-        }
+    public func initCell(toDo:ToDoItem){
+        categoryTitle.text = toDo.toDoName
+        //initIsChecked()
+        let url = URL(string: toDo.toDoImageIcon)
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        imageIcon.image = UIImage(data: data!)
+        imageIcon.contentMode = .scaleAspectFit
+        imageIcon.clipsToBounds = true
     }
+    
+    /*private func updateSelectedLabel(){
+        if(isSelected){
+            isCheckedLabel.text = "✓"
+        }else{
+            isCheckedLabel.text = ""
+        }
+    }*/
 
 }

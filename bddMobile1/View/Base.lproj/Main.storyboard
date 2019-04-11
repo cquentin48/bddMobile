@@ -584,7 +584,6 @@
                                 <connections>
                                     <outlet property="categoryTitle" destination="nPX-el-MzQ" id="AbJ-FY-iWd"/>
                                     <outlet property="imageIcon" destination="DiR-hE-df3" id="oET-oY-ena"/>
-                                    <outlet property="isChecked" destination="dVG-Zk-eZE" id="iOy-71-2TA"/>
                                     <segue destination="UmV-M4-Tjg" kind="show" identifier="showItem" trigger="accessoryAction" id="eqA-pK-K9h"/>
                                 </connections>
                             </tableViewCell>
@@ -595,7 +594,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Liste des objets" id="c6H-Vs-GyH">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="UHv-y2-JZN"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="UHv-y2-JZN">
+                            <connections>
+                                <action selector="returnAction:" destination="LTa-Um-rJW" id="1u7-Kw-2AD"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Arm-LD-TIA">
                             <connections>
                                 <segue destination="UmV-M4-Tjg" kind="showDetail" identifier="addItemToDoList" id="lpg-iP-O4s"/>

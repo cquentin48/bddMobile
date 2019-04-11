@@ -111,7 +111,6 @@ extension CategoryListTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if(isFiltering()){
             modelData.filterData(searchController)
-        }else{
         }
         tableView.reloadData()
     }

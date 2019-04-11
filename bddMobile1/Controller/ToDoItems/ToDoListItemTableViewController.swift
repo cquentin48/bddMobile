@@ -15,17 +15,36 @@ protocol ToDoListItemDelegate {
 class ToDoListItemTableViewController: UITableViewController {
     var delegate:ToDoListItemDelegate?
     var categoryIndex: Int = 0
+    var searchController:UISearchController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
+        initSearchController()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    @IBAction func returnAction(_ sender: Any) {
+        delegate?.cancel(self)
+    }
+    
+    func isFiltering() -> Bool{
+        return searchController!.searchBar.text != "" && searchController!.isActive
+    }
+    
+    func initSearchController(){
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController!.searchResultsUpdater = self
+        searchController!.obscuresBackgroundDuringPresentation = false
+        searchController!.searchBar.placeholder = "Rechercher un rappel"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,12 +54,13 @@ class ToDoListItemTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoListItemCell") as! ToDoListItemCell
-        cell.categoryTitle.text = modelData.categories![categoryIndex].itemList![indexPath.row].toDoName
-        let url = URL(string: modelData.categories![categoryIndex].itemList![indexPath.row].toDoImageIcon)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        cell.imageIcon.image = UIImage(data: data!)
-        cell.imageIcon.contentMode = .scaleAspectFit
-        cell.imageIcon.clipsToBounds = true
+        if(modelData.categories![categoryIndex].itemList!.count>0){
+            if(isFiltering()){
+                cell.initCell(toDo: modelData.filteredToDoItem![indexPath.row])
+            }else{
+                cell.initCell(toDo: modelData.categories![categoryIndex].itemList![indexPath.row])
+            }
+        }
         return cell
     }
 
@@ -56,6 +76,16 @@ class ToDoListItemTableViewController: UITableViewController {
             destVC.delegate = self
             destVC.toDoCategoryList = categoryIndex
         }
+    }
+}
+
+extension ToDoListItemTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        if(isFiltering()){
+            modelData.filterToDoItem(searchController, categoryId: categoryIndex)
+        }
+        tableView.reloadData()
     }
 }
 
