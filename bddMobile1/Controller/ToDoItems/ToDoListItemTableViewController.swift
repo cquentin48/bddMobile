@@ -39,22 +39,12 @@ class ToDoListItemTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.description == "addItem"){
+        if(segue.identifier == "addItem"){
             let navVC = segue.destination as! UINavigationController
-            let destVC = navVC.viewControllers.first as! ToDoController
+            let destVC = navVC.viewControllers.first as! ToDoItemDetailTableViewController
             destVC.delegate = self
         }
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -104,11 +94,11 @@ class ToDoListItemTableViewController: UITableViewController {
 }
 
 extension ToDoListItemTableViewController:ToDoDelegate{
-    func didAddItem(_ controller: ToDoController, itemAdded: ToDoItem) {
+    func didAddItem(_ controller: ToDoItemDetailTableViewController, itemAdded: ToDoItem) {
         dismiss(animated: true, completion: nil)
     }
     
-    func cancel(_ controller: ToDoController) {
+    func cancel(_ controller: ToDoItemDetailTableViewController) {
         dismiss(animated: true, completion: nil)
     }
     

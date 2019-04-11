@@ -26,8 +26,8 @@ class ModelData{
         print("Data adresse : "+ModelData.dataFileUrl.absoluteString)
     }
     
-    func loadCategoryTitles()->Array<String>{
-        var categoryList = Array<String>()
+    func loadCategoryTitles()->[String]{
+        var categoryList = [String]()
         categories!.forEach { (category) in
             categoryList.append(category.title!)
         }

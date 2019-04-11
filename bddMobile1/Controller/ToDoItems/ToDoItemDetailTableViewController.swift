@@ -9,12 +9,12 @@
 import UIKit
 
 protocol ToDoDelegate{
-    func didAddItem(_ controller:ToDoController, itemAdded:ToDoItem)
+    func didAddItem(_ controller:ToDoItemDetailTableViewController, itemAdded:ToDoItem)
     
-    func cancel(_ controller: ToDoController)
+    func cancel(_ controller: ToDoItemDetailTableViewController)
 }
 
-class ToDoController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
 
     @IBOutlet weak var reminderTitle: UITextField!
@@ -26,14 +26,15 @@ class ToDoController: UITableViewController, UIPickerViewDelegate, UIPickerViewD
     
     private var toDoObjectId:Int = -1
     private var toDoCategoryList:Int = 0
-    private var pickerViewList:Array<String>?
+    private var pickerViewList:[String]?
     
     var delegate:ToDoDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadPicker()
-        
+        categoriesPickerView.delegate = self
+        categoriesPickerView.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -70,7 +71,7 @@ class ToDoController: UITableViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return pickerViewList!.count
+        return 1
     }
     
     private func formatDate()->String{
@@ -87,6 +88,6 @@ class ToDoController: UITableViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
+        return pickerViewList!.count
     }
 }

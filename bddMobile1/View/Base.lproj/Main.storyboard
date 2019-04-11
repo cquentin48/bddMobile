@@ -282,7 +282,7 @@
         <!--Nouvel élément-->
         <scene sceneID="VmI-BK-xld">
             <objects>
-                <tableViewController id="60U-bT-4wL" customClass="ToDoController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="60U-bT-4wL" customClass="ToDoItemDetailTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8RT-iX-n4b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -511,7 +511,7 @@
         <!--Liste des objets-->
         <scene sceneID="gla-7z-XPb">
             <objects>
-                <tableViewController id="LTa-Um-rJW" customClass="ToDoItemListCell" sceneMemberID="viewController">
+                <tableViewController id="LTa-Um-rJW" customClass="ToDoListItemTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bY4-ef-OJy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -634,6 +634,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Jvq-NX-juw"/>
-        <segue reference="lpg-iP-O4s"/>
+        <segue reference="eqA-pK-K9h"/>
     </inferredMetricsTieBreakers>
 </document>
