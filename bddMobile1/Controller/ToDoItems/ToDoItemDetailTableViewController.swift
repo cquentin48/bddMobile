@@ -9,9 +9,9 @@
 import UIKit
 
 protocol ToDoDelegate{
-    func didAddItem(_ controller:ToDoItemDetailTableViewController, itemAdded:ToDoItem)
+    func didAddItem(controller:ToDoItemDetailTableViewController, itemAdded:ToDoItem, categoryId:String)
     
-    func cancel(_ controller: ToDoItemDetailTableViewController)
+    func cancel(controller: ToDoItemDetailTableViewController)
 }
 
 class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -27,7 +27,7 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     @IBOutlet weak var imageChosenButton: UIButton!
     
     private var toDoObjectId:Int = -1
-    private var toDoCategoryList:Int = 0
+    var toDoCategoryList:Int = 0
     private var pickerViewList:[String]?
     private var toDo:ToDoItem?
     private var tapGesture:UITapGestureRecognizer?
@@ -42,6 +42,8 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
         initPickerView()
         initImagePicker()
         generateModel()
+        initNewElement()
+        reminderDescription.text = String(toDoCategoryList)
     }
     
     private func initPickerView(){
@@ -65,11 +67,20 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     
     @IBAction func onDoneAction(_ sender: Any) {
         uploadImage()
-        delegate?.cancel(self)
+        updateModel()
+        delegate?.didAddItem(controller: self, itemAdded: toDo!, categoryId: modelData.categories![toDoCategoryList].id)
+    }
+    
+    private func updateModel(){
+        toDo?.toDoName = reminderTitle.text!
+        toDo?.toDoDescription = reminderDescription.text!
+        toDo?.toDoRemindDate = reminderDate.date
+        toDo?.toDoCreationDate = Date()
+        toDo?.toDoLastModificationDate = Date()
     }
     
     @IBAction func onCancelAction(_ sender: Any) {
-        delegate?.cancel(self)
+        delegate?.cancel(controller: self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

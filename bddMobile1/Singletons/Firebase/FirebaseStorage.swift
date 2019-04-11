@@ -19,6 +19,7 @@ class FirebaseStorage{
         case delete
         case update
         case insert
+        case select
     }
     
     public init(){
@@ -55,6 +56,18 @@ class FirebaseStorage{
                 case .insert: self.uploadImage(imageName: imagePath, image: image)
                 default: print("Aucune opération")
                 }
+            }
+        }
+    }
+    
+    func loadSingleImage(categoryId:String, cell:ToDoListItemCell){
+        let imageRef = storageReference.child(categoryId)
+        
+        imageRef.getData(maxSize: 1*1024*1024){ data, error in
+            if let imageError = error{
+                print("Erreur "+imageError.localizedDescription)
+            } else {
+                cell.imageIcon.image = UIImage(data: data!)
             }
         }
     }

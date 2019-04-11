@@ -41,4 +41,10 @@ class ToDoItem{
         dateTimeFormatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
         return dateTimeFormatter.string(from: rawDate)
     }
+    
+    func generateDateFromString(rawDate:String)->Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+        return dateFormatter.date(from: rawDate)!
+    }
 }

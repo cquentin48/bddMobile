@@ -36,7 +36,7 @@ class ModelData{
     
     func saveChecklistItems(){
         //savetoJSON()
-        exportToFirebaseDatabase()
+        //exportToFirebaseDatabase()
     }
     
     /*func savetoJSON(){
@@ -61,11 +61,11 @@ class ModelData{
     }
     
     func loadFromFirebase(tableView: UITableView){
-        firebaseCloudFirestore.loadAllCategories(tableView: tableView)
+        firebaseCloudFirestore.loadCategoriesIfExist(tableView: tableView)
     }
     
-    func removeCategoryFromFirebase(tableView: UITableView, key:Int){
-        firebaseCloudFirestore.removeCategory(tableView: tableView, key: self.categories![key].id)
+    func removeCategoryFromFirebase(key:Int){
+        firebaseCloudFirestore.removeElement(key: self.categories![key].id)
         categories?.remove(at: key)
     }
     

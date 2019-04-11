@@ -100,7 +100,7 @@ class CategoryListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            modelData.removeCategoryFromFirebase(tableView: tableView, key: indexPath.row)
+            modelData.removeCategoryFromFirebase(key: indexPath.row)
             table.deleteRows(at: [indexPath], with: .automatic)
         }
     }
@@ -128,6 +128,7 @@ extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
         table.insertRows(at: [IndexPath(row: modelData.categories!.count-1, section: 0)], with: .automatic)
         table.endUpdates()
         modelData.saveChecklistItems()
+        firebaseCloudFirestore.addCategories(category: item)
         controller.dismiss(animated: true, completion: nil)
     }
     

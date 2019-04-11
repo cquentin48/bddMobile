@@ -69,10 +69,11 @@ class CategoryDetailTableViewController: UITableViewController, UITextFieldDeleg
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "access_to_object_list"){
-            /*let navVC = segue.destination as! UINavigationController
-            let destVC = navVC.viewControllers.first as! ItemDetailTableViewController
-            destVC.delegate = self*/
+        if(segue.identifier == "itemList"){
+            let navVC = segue.destination as! UINavigationController
+            let destVC = navVC.viewControllers.first as! ToDoListItemTableViewController
+            destVC.delegate = self
+            destVC.categoryIndex = index!
         }
     }
     
@@ -87,5 +88,11 @@ class CategoryDetailTableViewController: UITableViewController, UITextFieldDeleg
     
     @IBAction func onCancelAction(_ sender: Any) {
         delegate?.itemViewControllerDidCancel(self)
+    }
+}
+
+extension CategoryDetailTableViewController:ToDoListItemDelegate{
+    func cancel(_ controller: ToDoListItemTableViewController) {
+        dismiss(animated: true, completion: nil)
     }
 }
