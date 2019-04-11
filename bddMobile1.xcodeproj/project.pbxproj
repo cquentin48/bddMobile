@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		08160F47221FE8D200571EA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F46221FE8D200571EA8 /* AppDelegate.swift */; };
-		08160F49221FE8D200571EA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08160F48221FE8D200571EA8 /* ViewController.swift */; };
 		08160F4C221FE8D200571EA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08160F4A221FE8D200571EA8 /* Main.storyboard */; };
 		08160F4E221FE8D300571EA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08160F4D221FE8D300571EA8 /* Assets.xcassets */; };
 		08160F51221FE8D300571EA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08160F4F221FE8D300571EA8 /* LaunchScreen.storyboard */; };
@@ -25,6 +24,7 @@
 		0894A854223FC8EE00011F79 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894A853223FC8EE00011F79 /* Profile.swift */; };
 		08A33413225B650F006A13A5 /* ToDoItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A33412225B650F006A13A5 /* ToDoItemDetailTableViewController.swift */; };
 		08A90A46223FF2C800A88084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08A90A45223FF2C800A88084 /* GoogleService-Info.plist */; };
+		08D8E122225F3BE7003D6B8A /* FirebaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8E121225F3BE7003D6B8A /* FirebaseStorage.swift */; };
 		08E7A011222010FF0014283B /* CategoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A010222010FF0014283B /* CategoryDetailTableViewController.swift */; };
 		08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */; };
 		4264B9BBD52A21F07E10ED33 /* Pods_bddMobile1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0010F5F8D929297E38050A8F /* Pods_bddMobile1.framework */; };
@@ -34,7 +34,6 @@
 		0010F5F8D929297E38050A8F /* Pods_bddMobile1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bddMobile1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08160F43221FE8D200571EA8 /* bddMobile1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bddMobile1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08160F46221FE8D200571EA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		08160F48221FE8D200571EA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		08160F4B221FE8D200571EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08160F4D221FE8D300571EA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08160F50221FE8D300571EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		0894A853223FC8EE00011F79 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		08A33412225B650F006A13A5 /* ToDoItemDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemDetailTableViewController.swift; sourceTree = "<group>"; };
 		08A90A45223FF2C800A88084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		08D8E121225F3BE7003D6B8A /* FirebaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorage.swift; sourceTree = "<group>"; };
 		08E7A010222010FF0014283B /* CategoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
 		490ABAEA85C9E20F3FB8FBAC /* Pods-bddMobile1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bddMobile1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1.debug.xcconfig"; sourceTree = "<group>"; };
@@ -199,7 +199,6 @@
 				08266E5A225F24CD00D5550E /* ToDoItems */,
 				08266E59225F24A900D5550E /* CategoryList */,
 				08266E58225F249900D5550E /* Connection */,
-				08160F48221FE8D200571EA8 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */,
+				08D8E121225F3BE7003D6B8A /* FirebaseStorage.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -402,12 +402,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08160F49221FE8D200571EA8 /* ViewController.swift in Sources */,
 				08160F5F221FF5B600571EA8 /* CategoryListTableViewController.swift in Sources */,
 				08160F47221FE8D200571EA8 /* AppDelegate.swift in Sources */,
 				08160F5D221FEE1000571EA8 /* Categories.swift in Sources */,
 				08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */,
 				08A33413225B650F006A13A5 /* ToDoItemDetailTableViewController.swift in Sources */,
+				08D8E122225F3BE7003D6B8A /* FirebaseStorage.swift in Sources */,
 				08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */,
 				08E7A011222010FF0014283B /* CategoryDetailTableViewController.swift in Sources */,
 				08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */,

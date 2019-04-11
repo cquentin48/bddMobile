@@ -29,6 +29,7 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     private var toDoObjectId:Int = -1
     private var toDoCategoryList:Int = 0
     private var pickerViewList:[String]?
+    private var toDo:ToDoItem?
     private var tapGesture:UITapGestureRecognizer?
     
     private var imagePicker = UIImagePickerController()
@@ -37,13 +38,33 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initPickerView()
+        initImagePicker()
+        generateModel()
+    }
+    
+    private func initPickerView(){
         loadPicker()
-        imagePicker.delegate = self
         categoriesPickerView.delegate = self
         categoriesPickerView.dataSource = self
     }
     
+    private func initImagePicker(){
+        imagePicker.delegate = self
+    }
+    
+    private func generateModel(){
+        toDo = ToDoItem()
+        toDo?.toDoKey = (toDo?.generateKey())!
+    }
+    
+    private func uploadImage(){
+        storage.manageOperations(imagePath: toDo!.toDoKey, image:toDoIcon.image!, operationType:.insert)
+    }
+    
     @IBAction func onDoneAction(_ sender: Any) {
+        uploadImage()
         delegate?.cancel(self)
     }
     
@@ -79,8 +100,6 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
         //let dateTimeFormatter = DateFormatter()
         return ""
     }
-    
-    private func uploadImageTo
     
     private func isNotCreated() ->Bool{
         return toDoObjectId == -1

@@ -11,29 +11,50 @@ import Firebase
 let firebaseCloudFirestore = FirebaseDatabase()
 class FirebaseDatabase{
     var db: DatabaseReference! = Database.database().reference()
-    var elementLoaded:Bool = false
-    private var collectionRef:DatabaseReference
+    var categoriesLoaded:Bool = false
+    var toDoItemLoaded:Bool = false
+    var collectionRef:DatabaseReference
+    var toDoRef:DatabaseReference
     
     func saveCategories(){
         modelData.categories!.enumerated().map{ (index, singleCategory) in
-            addCategories(category: singleCategory, position: index)
+            addCategories(category: singleCategory)
         }
     }
     
     required init() {
         collectionRef = db.child("collection")
+        toDoRef = db.child("toDoItems")
     }
     
-    func addCategories(category:Categories, position:Int){
-        category.id = (collectionRef.childByAutoId()).key!
+    func addCategories(category:Categories){
+        category.id = generateKey(ref: collectionRef)
         let categoryRef = collectionRef.child(category.id).setValue([
             "title" : category.title,
             "description" : category.description,
             "image" : category.image,
             "authorId" : category.authorId,
-            "isChecked" : category.isChecked,
-            "itemList" : category.itemList
+            "isChecked" : category.isChecked
         ])
+    }
+    
+    func addToDoItem(toDoItem:ToDoItem){
+        toDoRef.child(toDoItem.toDoKey).setValue([
+            "title" : toDoItem.toDoName,
+            "description" : toDoItem.toDoDescription,
+            "reminder" : toDoItem.generateStringFromDate(rawDate: toDoItem.toDoRemindDate),
+            "creationDate" : toDoItem.generateStringFromDate(rawDate: toDoItem.toDoCreationDate),
+            "lastModificationDate" : toDoItem.generateStringFromDate(rawDate: toDoItem.toDoLastModificationDate)
+            ])
+    }
+    
+    func removeToDoItem(key:String){
+        let toDoItemRef = toDoRef.child(key)
+        toDoItemRef.removeValue()
+    }
+    
+    func generateKey(ref:DatabaseReference)->String{
+        return ref.childByAutoId().key!
     }
     
     func removeCategories(key:String){
@@ -55,7 +76,7 @@ class FirebaseDatabase{
             categoriesKey.map{(singleKey) in
                modelData.categories?.append(self.addCategoryToList(rawData: categories?.object(forKey: singleKey) as! NSDictionary, index: singleKey))
                 if(modelData.categories?.count == categories?.count){
-                    self.elementLoaded = true
+                    self.categoriesLoaded = true
                 }
             }
             DispatchQueue.main.async {

@@ -17,8 +17,9 @@ class ToDoItem{
     var toDoLastModificationDate:Date
     
     var toDoImageIcon:String
+    var toDoKey:String
     
-    init(toDoName:String = "", toDoDescription:String = "", toDoRemindDate:Date = Date(), toDoCreationDate:Date = Date(), toDoLastModificationDate:Date = Date(), toDoImageIcon:String = "") {
+    init(toDoName:String = "", toDoDescription:String = "", toDoRemindDate:Date = Date(), toDoCreationDate:Date = Date(), toDoLastModificationDate:Date = Date(), toDoImageIcon:String = "", toDoKey:String = "") {
         self.toDoName = toDoName
         self.toDoDescription = toDoDescription
         self.toDoRemindDate = toDoRemindDate
@@ -27,5 +28,17 @@ class ToDoItem{
         self.toDoLastModificationDate = toDoLastModificationDate
         
         self.toDoImageIcon = toDoImageIcon
+        self.toDoKey = toDoKey
+    }
+    
+    func generateKey()->String{
+        return firebaseCloudFirestore.generateKey(ref: firebaseCloudFirestore.toDoRef)
+    }
+    
+    func generateStringFromDate(rawDate:Date)->String{
+        let dateTimeFormatter = DateFormatter()
+        dateTimeFormatter.calendar = Calendar(identifier: .iso8601)
+        dateTimeFormatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+        return dateTimeFormatter.string(from: rawDate)
     }
 }
