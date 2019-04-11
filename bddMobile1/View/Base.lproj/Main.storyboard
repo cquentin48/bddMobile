@@ -376,12 +376,36 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Image" id="jhH-ZX-z2o">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7qM-F0-yw8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="imageChosenCell" id="7qM-F0-yw8">
                                         <rect key="frame" x="0.0" y="216" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7qM-F0-yw8" id="NuU-un-Ubv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fjf-VU-djE">
+                                                    <rect key="frame" x="297" y="0.0" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="H4c-SU-qN3"/>
+                                                        <constraint firstAttribute="width" constant="44" id="duF-F8-KLz"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTV-R6-pKP">
+                                                    <rect key="frame" x="16" y="6.5" width="113" height="30"/>
+                                                    <state key="normal" title="Choix de l'image"/>
+                                                    <connections>
+                                                        <action selector="chooseImage:" destination="60U-bT-4wL" eventType="touchUpInside" id="eev-rt-mK4"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="fjf-VU-djE" secondAttribute="trailing" id="2Fz-Vz-8n2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mTV-R6-pKP" secondAttribute="bottom" constant="-4" id="D6k-Qt-KXG"/>
+                                                <constraint firstItem="mTV-R6-pKP" firstAttribute="leading" secondItem="NuU-un-Ubv" secondAttribute="leading" constant="16" id="RW9-Ux-eyz"/>
+                                                <constraint firstItem="fjf-VU-djE" firstAttribute="top" secondItem="NuU-un-Ubv" secondAttribute="top" id="YmH-n6-mvc"/>
+                                                <constraint firstItem="mTV-R6-pKP" firstAttribute="centerY" secondItem="NuU-un-Ubv" secondAttribute="centerY" id="cea-Uy-EtX"/>
+                                                <constraint firstAttribute="bottom" secondItem="fjf-VU-djE" secondAttribute="bottom" id="uit-iO-CdD"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -498,15 +522,17 @@
                     <connections>
                         <outlet property="categoriesPickerView" destination="k7s-7B-fHj" id="adR-sF-xhW"/>
                         <outlet property="creationDateLabel" destination="lLF-eC-Gq2" id="9LI-y2-iLR"/>
+                        <outlet property="imageChosenButton" destination="mTV-R6-pKP" id="QCi-eo-0Av"/>
                         <outlet property="lastModificationDateLabel" destination="TBl-cb-0UV" id="O8R-zO-EJ8"/>
                         <outlet property="reminderDate" destination="RQe-si-eHZ" id="3xZ-Y7-wHI"/>
                         <outlet property="reminderDescription" destination="9GC-5v-d0g" id="5Gh-Py-Rsp"/>
                         <outlet property="reminderTitle" destination="oku-42-WVG" id="iER-ca-ETP"/>
+                        <outlet property="toDoIcon" destination="fjf-VU-djE" id="D9Z-vB-Oig"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Sd-Ki-U8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7180" y="-172"/>
+            <point key="canvasLocation" x="7180" y="-172.26386806596702"/>
         </scene>
         <!--Liste des objets-->
         <scene sceneID="gla-7z-XPb">

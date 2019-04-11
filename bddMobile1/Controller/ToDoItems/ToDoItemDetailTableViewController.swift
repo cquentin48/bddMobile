@@ -23,10 +23,13 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     @IBOutlet weak var reminderDate: UIDatePicker!
     @IBOutlet weak var creationDateLabel: UILabel!
     @IBOutlet weak var lastModificationDateLabel: UILabel!
+    @IBOutlet weak var toDoIcon: UIImageView!
+    @IBOutlet weak var imageChosenButton: UIButton!
     
     private var toDoObjectId:Int = -1
     private var toDoCategoryList:Int = 0
     private var pickerViewList:[String]?
+    private var tapGesture:UITapGestureRecognizer?
     
     var delegate:ToDoDelegate?
     
@@ -35,11 +38,6 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
         loadPicker()
         categoriesPickerView.delegate = self
         categoriesPickerView.dataSource = self
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     @IBAction func onDoneAction(_ sender: Any) {
@@ -89,5 +87,35 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerViewList!.count
+    }
+    
+    func loadImageMessageDialog(){
+        let alert = UIAlertController(title: "Choix d'un image", message: "Veuillez choisir une image pour ce qui est à faire.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Passage par une URL", style: .default, handler: { action in
+            self.loadCategory(sourceType: .camera)
+        }))
+        alert.addAction(UIAlertAction(title: "Passage par la gallerie", style: .default, handler: { action in
+            self.loadCategory(sourceType: .savedPhotosAlbum)
+        }))
+        alert.addAction(UIAlertAction(title: "Passage par l'appareil photo", style: .default, handler: { action in
+            self.loadCategory(sourceType: .camera)
+        }))
+        self.present(alert, animated: true)
+    }
+
+    
+    @IBAction func chooseImage(_ sender: Any) {
+        loadImageMessageDialog()
+    }
+}
+
+extension ToDoItemDetailTableViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func loadCategory(sourceType : UIImagePickerController.SourceType){
+        if UIImagePickerController.isSourceTypeAvailable(sourceType){
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            controller.sourceType = sourceType
+            self.present(controller, animated: true, completion: nil)
+        }
     }
 }
