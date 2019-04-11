@@ -25,7 +25,7 @@
 		0894A854223FC8EE00011F79 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0894A853223FC8EE00011F79 /* Profile.swift */; };
 		08A33413225B650F006A13A5 /* ToDoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A33412225B650F006A13A5 /* ToDoController.swift */; };
 		08A90A46223FF2C800A88084 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08A90A45223FF2C800A88084 /* GoogleService-Info.plist */; };
-		08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */; };
+		08E7A011222010FF0014283B /* CategoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7A010222010FF0014283B /* CategoryDetailTableViewController.swift */; };
 		08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */; };
 		4264B9BBD52A21F07E10ED33 /* Pods_bddMobile1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0010F5F8D929297E38050A8F /* Pods_bddMobile1.framework */; };
 /* End PBXBuildFile section */
@@ -52,7 +52,7 @@
 		0894A853223FC8EE00011F79 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		08A33412225B650F006A13A5 /* ToDoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoController.swift; sourceTree = "<group>"; };
 		08A90A45223FF2C800A88084 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
+		08E7A010222010FF0014283B /* CategoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		08FDFBA2225230D40032C2C8 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
 		490ABAEA85C9E20F3FB8FBAC /* Pods-bddMobile1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bddMobile1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1.debug.xcconfig"; sourceTree = "<group>"; };
 		DE75D5AA24B491BB3DD8F38B /* Pods-bddMobile1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bddMobile1.release.xcconfig"; path = "Pods/Target Support Files/Pods-bddMobile1/Pods-bddMobile1.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,8 +91,7 @@
 		08160F45221FE8D200571EA8 /* bddMobile1 */ = {
 			isa = PBXGroup;
 			children = (
-				08FDFB9F225215FC0032C2C8 /* Firebase */,
-				088A6CCB224100AD00778C38 /* ModelData */,
+				08266E5B225F24E100D5550E /* Singletons */,
 				0894A857223FDD2200011F79 /* Ressource */,
 				08E7A00D222001120014283B /* Controller */,
 				08160F59221FED0100571EA8 /* Model */,
@@ -117,11 +116,65 @@
 		08160F59221FED0100571EA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				08160F5C221FEE1000571EA8 /* Categories.swift */,
-				0894A853223FC8EE00011F79 /* Profile.swift */,
-				0844624D225C6BC40062D6F9 /* ToDoItem.swift */,
+				08266E5D225F250700D5550E /* Firebase */,
+				08266E5C225F24F600D5550E /* Categories */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		08266E58225F249900D5550E /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				08890E6B223FB2AC0059D64F /* ConnectionController.swift */,
+				08890E6D223FC79C0059D64F /* RegistrationController.swift */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		08266E59225F24A900D5550E /* CategoryList */ = {
+			isa = PBXGroup;
+			children = (
+				08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */,
+				08E7A010222010FF0014283B /* CategoryDetailTableViewController.swift */,
+				08890E5D223F8FE40059D64F /* CategoryCell.swift */,
+			);
+			path = CategoryList;
+			sourceTree = "<group>";
+		};
+		08266E5A225F24CD00D5550E /* ToDoItems */ = {
+			isa = PBXGroup;
+			children = (
+				08A33412225B650F006A13A5 /* ToDoController.swift */,
+				0844624F225C6D920062D6F9 /* ToDoListItemTableViewController.swift */,
+				08446251225C6ED90062D6F9 /* ToDoListItemCell.swift */,
+			);
+			path = ToDoItems;
+			sourceTree = "<group>";
+		};
+		08266E5B225F24E100D5550E /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				08FDFB9F225215FC0032C2C8 /* Firebase */,
+				088A6CCB224100AD00778C38 /* ModelData */,
+			);
+			path = Singletons;
+			sourceTree = "<group>";
+		};
+		08266E5C225F24F600D5550E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				08160F5C221FEE1000571EA8 /* Categories.swift */,
+				0844624D225C6BC40062D6F9 /* ToDoItem.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		08266E5D225F250700D5550E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				0894A853223FC8EE00011F79 /* Profile.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		088A6CCB224100AD00778C38 /* ModelData */ = {
@@ -143,15 +196,10 @@
 		08E7A00D222001120014283B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				08266E5A225F24CD00D5550E /* ToDoItems */,
+				08266E59225F24A900D5550E /* CategoryList */,
+				08266E58225F249900D5550E /* Connection */,
 				08160F48221FE8D200571EA8 /* ViewController.swift */,
-				08160F5E221FF5B600571EA8 /* CategoryListTableViewController.swift */,
-				08E7A010222010FF0014283B /* ItemDetailTableViewController.swift */,
-				08890E5D223F8FE40059D64F /* CategoryCell.swift */,
-				08890E6B223FB2AC0059D64F /* ConnectionController.swift */,
-				08890E6D223FC79C0059D64F /* RegistrationController.swift */,
-				08A33412225B650F006A13A5 /* ToDoController.swift */,
-				0844624F225C6D920062D6F9 /* ToDoListItemTableViewController.swift */,
-				08446251225C6ED90062D6F9 /* ToDoListItemCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -361,7 +409,7 @@
 				08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */,
 				08A33413225B650F006A13A5 /* ToDoController.swift in Sources */,
 				08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */,
-				08E7A011222010FF0014283B /* ItemDetailTableViewController.swift in Sources */,
+				08E7A011222010FF0014283B /* CategoryDetailTableViewController.swift in Sources */,
 				08890E6E223FC79C0059D64F /* RegistrationController.swift in Sources */,
 				0844624E225C6BC40062D6F9 /* ToDoItem.swift in Sources */,
 				08446252225C6ED90062D6F9 /* ToDoListItemCell.swift in Sources */,

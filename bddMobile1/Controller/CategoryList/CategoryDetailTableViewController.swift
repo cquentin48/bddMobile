@@ -9,12 +9,12 @@
 import UIKit
 import FirebaseAuth
 protocol ItemDetailViewControllerDelegate : class {
-    func itemViewControllerDidCancel(_ controller: ItemDetailTableViewController)
-    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishAddingItem item: Categories)
-    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int)
+    func itemViewControllerDidCancel(_ controller: CategoryDetailTableViewController)
+    func itemDetailViewController(_ controller: CategoryDetailTableViewController, didFinishAddingItem item: Categories)
+    func itemDetailViewController(_ controller: CategoryDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int)
 }
 
-class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate {
+class CategoryDetailTableViewController: UITableViewController, UITextFieldDelegate {
     var delegate : ItemDetailViewControllerDelegate?
     var item:Categories?
     var index:Int?

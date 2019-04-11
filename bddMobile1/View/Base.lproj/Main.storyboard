@@ -106,7 +106,7 @@
         <!--Root View Controller-->
         <scene sceneID="d8y-nG-HU5">
             <objects>
-                <tableViewController id="Vmo-sz-qzQ" customClass="ItemDetailTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Vmo-sz-qzQ" customClass="CategoryDetailTableViewController" customModule="bddMobile1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="w7I-Sf-VyU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
