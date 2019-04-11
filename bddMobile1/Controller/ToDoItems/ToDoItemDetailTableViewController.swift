@@ -31,11 +31,14 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     private var pickerViewList:[String]?
     private var tapGesture:UITapGestureRecognizer?
     
+    private var imagePicker = UIImagePickerController()
+    
     var delegate:ToDoDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadPicker()
+        imagePicker.delegate = self
         categoriesPickerView.delegate = self
         categoriesPickerView.dataSource = self
     }
@@ -77,6 +80,8 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
         return ""
     }
     
+    private func uploadImageTo
+    
     private func isNotCreated() ->Bool{
         return toDoObjectId == -1
     }
@@ -90,16 +95,11 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
     }
     
     func loadImageMessageDialog(){
-        let alert = UIAlertController(title: "Choix d'un image", message: "Veuillez choisir une image pour ce qui est à faire.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Passage par une URL", style: .default, handler: { action in
-            self.loadCategory(sourceType: .camera)
-        }))
+        let alert = UIAlertController(title: "Choix d'un image", message: "Veuillez choisir une image pour ce qui est à faire.", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Passage par la gallerie", style: .default, handler: { action in
-            self.loadCategory(sourceType: .savedPhotosAlbum)
+            self.loadGallery()
         }))
-        alert.addAction(UIAlertAction(title: "Passage par l'appareil photo", style: .default, handler: { action in
-            self.loadCategory(sourceType: .camera)
-        }))
+        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
 
@@ -110,12 +110,16 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
 }
 
 extension ToDoItemDetailTableViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func loadCategory(sourceType : UIImagePickerController.SourceType){
-        if UIImagePickerController.isSourceTypeAvailable(sourceType){
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            controller.sourceType = sourceType
-            self.present(controller, animated: true, completion: nil)
+    func loadGallery(){
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker,animated: true,completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            toDoIcon.image = image
         }
+        dismiss(animated: true, completion: nil)
     }
 }
