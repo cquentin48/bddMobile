@@ -16,7 +16,6 @@ class ConnectionController: UIViewController {
     var authUI:FUIAuth?
     
     @IBAction func connectAction(_ sender: Any) {
-        print("Connection")
         let authUI = FUIAuth.defaultAuthUI()
         
         guard authUI != nil else{
