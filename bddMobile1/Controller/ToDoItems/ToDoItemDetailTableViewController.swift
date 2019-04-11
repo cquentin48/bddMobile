@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ToDoDelegate{
-    func didAddItem(controller:ToDoItemDetailTableViewController, itemAdded:ToDoItem, categoryId:String)
+    func didAddItem(controller:ToDoItemDetailTableViewController, itemAdded:ToDoItem, categoryIdString:String, image:UIImage)
     
     func cancel(controller: ToDoItemDetailTableViewController)
 }
@@ -61,14 +61,9 @@ class ToDoItemDetailTableViewController: UITableViewController, UIPickerViewDele
         toDo?.toDoKey = (toDo?.generateKey())!
     }
     
-    private func uploadImage(){
-        storage.manageOperations(imagePath: toDo!.toDoKey, image:toDoIcon.image!, operationType:.insert)
-    }
-    
     @IBAction func onDoneAction(_ sender: Any) {
-        uploadImage()
         updateModel()
-        delegate?.didAddItem(controller: self, itemAdded: toDo!, categoryId: modelData.categories![toDoCategoryList].id)
+        delegate?.didAddItem(controller: self, itemAdded: toDo!, categoryIdString: modelData.categories![toDoCategoryList].id, image: toDoIcon.image!)
     }
     
     private func updateModel(){

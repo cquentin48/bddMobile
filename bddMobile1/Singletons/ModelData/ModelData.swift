@@ -16,6 +16,10 @@ class ModelData{
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
+    func addToDoToCollectionList(categoryIndex:Int, toDoItem:ToDoItem){
+        categories![categoryIndex].itemList!.append(toDoItem)
+    }
+    
     static var dataFileUrl:URL {
         return documentDirectory.appendingPathComponent("CheckLists").appendingPathExtension("json")
     }

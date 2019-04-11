@@ -32,6 +32,17 @@ class ToDoListItemTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "toDoListItemCell") as! ToDoListItemCell
+        cell.categoryTitle.text = modelData.categories![categoryIndex].itemList![indexPath.row].toDoName
+        let url = URL(string: modelData.categories![categoryIndex].itemList![indexPath.row].toDoImageIcon)
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        cell.imageIcon.image = UIImage(data: data!)
+        cell.imageIcon.contentMode = .scaleAspectFit
+        cell.imageIcon.clipsToBounds = true
+        return cell
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -39,25 +50,22 @@ class ToDoListItemTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "addItem"){
+        if(segue.identifier == "addItemToDoList"){
             let navVC = segue.destination as! UINavigationController
             let destVC = navVC.viewControllers.first as! ToDoItemDetailTableViewController
             destVC.delegate = self
             destVC.toDoCategoryList = categoryIndex
         }
     }
-
 }
 
 extension ToDoListItemTableViewController:ToDoDelegate{
-    func didAddItem(controller: ToDoItemDetailTableViewController, itemAdded: ToDoItem, categoryId:String) {
+    func didAddItem(controller: ToDoItemDetailTableViewController, itemAdded: ToDoItem, categoryIdString:String, image:UIImage) {
         dismiss(animated: true, completion: nil)
-        firebaseCloudFirestore.addToDoItem(toDoItem: itemAdded, categoryId: categoryId)
+        storage.uploadImage(toDoItemAdded: itemAdded, image: image, categoryId: categoryIndex, tableView: self.tableView)
     }
     
     func cancel(controller: ToDoItemDetailTableViewController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }

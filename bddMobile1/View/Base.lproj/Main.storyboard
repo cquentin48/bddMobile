@@ -541,7 +541,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="AE5-bo-mPq" customClass="ToDoListItemCell" customModule="bddMobile1" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="toDoListItemCell" id="AE5-bo-mPq" customClass="ToDoListItemCell" customModule="bddMobile1" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AE5-bo-mPq" id="KbL-lg-CTB">
@@ -552,6 +552,7 @@
                                             <rect key="frame" x="16" y="0.0" width="50" height="43.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="0Sq-yF-tOI"/>
+                                                <constraint firstAttribute="height" constant="43.5" id="7zd-Jj-SD7"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPX-el-MzQ">
@@ -584,9 +585,7 @@
                                     <outlet property="categoryTitle" destination="nPX-el-MzQ" id="AbJ-FY-iWd"/>
                                     <outlet property="imageIcon" destination="DiR-hE-df3" id="oET-oY-ena"/>
                                     <outlet property="isChecked" destination="dVG-Zk-eZE" id="iOy-71-2TA"/>
-                                    <segue destination="UmV-M4-Tjg" kind="popoverPresentation" identifier="showItem" trigger="accessoryAction" popoverAnchorView="AE5-bo-mPq" id="eqA-pK-K9h">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="UmV-M4-Tjg" kind="show" identifier="showItem" trigger="accessoryAction" id="eqA-pK-K9h"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -599,7 +598,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="UHv-y2-JZN"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Arm-LD-TIA">
                             <connections>
-                                <segue destination="UmV-M4-Tjg" kind="showDetail" identifier="addItem" id="lpg-iP-O4s"/>
+                                <segue destination="UmV-M4-Tjg" kind="showDetail" identifier="addItemToDoList" id="lpg-iP-O4s"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

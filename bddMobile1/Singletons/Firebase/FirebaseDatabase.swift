@@ -40,14 +40,14 @@ class FirebaseDatabase{
     
     func addToDoItem(toDoItem:ToDoItem, categoryId:String){
         toDoItem.toDoKey = generateKey(ref: toDoRef)
-        let toDoItemRef = toDoRef.child("nouvelnfkn").setValue([
+        let toDoItemRef = toDoRef.child(toDoItem.toDoKey).setValue([
             "title" : toDoItem.toDoName,
             "description" : toDoItem.toDoDescription,
             "reminder" : toDoItem.generateStringFromDate(rawDate: toDoItem.toDoRemindDate),
             "creationDate" : toDoItem.generateStringFromDate(rawDate: toDoItem.toDoCreationDate),
             "lastModificationDate" : toDoItem.generateStringFromDate(rawDate: toDoItem.toDoLastModificationDate),
             "categoryId" : categoryId,
-            "imageURL" : ""
+            "imageURL" : toDoItem.toDoImageIcon
             ])
     }
     
