@@ -46,11 +46,11 @@ class CategoryListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItem" {
             let navVC = segue.destination as! UINavigationController
-            let destVC = navVC.viewControllers.first as! ItemDetailTableViewController
+            let destVC = navVC.viewControllers.first as! CategoryDetailTableViewController
             destVC.delegate = self
         }else if segue.identifier == "editItem" {
             let navVC = segue.destination as! UINavigationController
-            let destVC = navVC.viewControllers.first as! ItemDetailTableViewController
+            let destVC = navVC.viewControllers.first as! CategoryDetailTableViewController
             destVC.delegate = self
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
             destVC.index = indexPath.row
@@ -100,10 +100,8 @@ class CategoryListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            modelData.categories?.remove(at: indexPath.row)
+            modelData.removeCategoryFromFirebase(key: indexPath.row)
             table.deleteRows(at: [indexPath], with: .automatic)
-            modelData.saveChecklistItems()
-            firebaseCloudFirestore.removeCategories(key: modelData.categories![indexPath.row].id)
         }
     }
 }
@@ -113,27 +111,27 @@ extension CategoryListTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if(isFiltering()){
             modelData.filterData(searchController)
-        }else{
         }
         tableView.reloadData()
     }
 }
 
 extension CategoryListTableViewController: ItemDetailViewControllerDelegate{
-    func itemViewControllerDidCancel(_ controller: ItemDetailTableViewController) {
+    func itemViewControllerDidCancel(_ controller: CategoryDetailTableViewController) {
         dismiss(animated: true, completion: nil)
     }
     
-    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishAddingItem item: Categories) {
+    func itemDetailViewController(_ controller: CategoryDetailTableViewController, didFinishAddingItem item: Categories) {
         table.beginUpdates()
         modelData.categories?.append(item)
         table.insertRows(at: [IndexPath(row: modelData.categories!.count-1, section: 0)], with: .automatic)
         table.endUpdates()
         modelData.saveChecklistItems()
+        firebaseCloudFirestore.addCategories(category: item)
         controller.dismiss(animated: true, completion: nil)
     }
     
-    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int) {
+    func itemDetailViewController(_ controller: CategoryDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int) {
         table.beginUpdates()
         modelData.categories![indexAt] = item
         

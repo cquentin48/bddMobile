@@ -9,12 +9,12 @@
 import UIKit
 import FirebaseAuth
 protocol ItemDetailViewControllerDelegate : class {
-    func itemViewControllerDidCancel(_ controller: ItemDetailTableViewController)
-    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishAddingItem item: Categories)
-    func itemDetailViewController(_ controller: ItemDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int)
+    func itemViewControllerDidCancel(_ controller: CategoryDetailTableViewController)
+    func itemDetailViewController(_ controller: CategoryDetailTableViewController, didFinishAddingItem item: Categories)
+    func itemDetailViewController(_ controller: CategoryDetailTableViewController, didFinishEditingItem item: Categories, indexAt: Int)
 }
 
-class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate {
+class CategoryDetailTableViewController: UITableViewController, UITextFieldDelegate {
     var delegate : ItemDetailViewControllerDelegate?
     var item:Categories?
     var index:Int?
@@ -24,6 +24,7 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var itemList: UITableViewCell!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var itemCount: UILabel!
     
     
     override func viewDidLoad() {
@@ -38,6 +39,15 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
         titleInput.becomeFirstResponder()
         initDoneButton()
         addDelegateForTextInput()
+        initToDoListCategory()
+    }
+    
+    func initToDoListCategory(){
+        if(item?.itemList == nil){
+            itemCount.text = "0"
+        }else{
+            itemCount.text = String(item!.itemList!.count)
+        }
     }
     
     func addDelegateForTextInput(){
@@ -58,6 +68,15 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
         categoryDescription.frame.size = categoryDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))*/
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "itemList"){
+            let navVC = segue.destination as! UINavigationController
+            let destVC = navVC.viewControllers.first as! ToDoListItemTableViewController
+            destVC.delegate = self
+            destVC.categoryIndex = index!
+        }
+    }
+    
     @IBAction func onDoneAction(_ sender: Any) {
         delegate?.itemViewControllerDidCancel(self)
         if(item == nil){
@@ -69,5 +88,12 @@ class ItemDetailTableViewController: UITableViewController, UITextFieldDelegate 
     
     @IBAction func onCancelAction(_ sender: Any) {
         delegate?.itemViewControllerDidCancel(self)
+    }
+}
+
+extension CategoryDetailTableViewController:ToDoListItemDelegate{
+    func cancel(_ controller: ToDoListItemTableViewController) {
+        dismiss(animated: true, completion: nil)
+        itemCount.text = String(item!.itemList!.count)
     }
 }

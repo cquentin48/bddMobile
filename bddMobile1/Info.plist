@@ -48,7 +48,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Cette application souhaite accéder à votre gallerie d'images.</string>
+	<string>Cette application souhaite accéder à votre gallerie d&apos;images.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Cette application souhaite accéder à votre gallerie de photos.</string>
 	<key>UILaunchStoryboardName</key>
