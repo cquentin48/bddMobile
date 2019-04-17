@@ -19,4 +19,5 @@ target 'bddMobile1' do
  pod 'MBProgressHUD'
  pod 'Firebase/Core'
  pod 'Firebase/Database'
+ pod 'Firebase/Storage'
 end

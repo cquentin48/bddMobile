@@ -8,16 +8,16 @@
 
 import UIKit
 
-class Categories : Codable{
+class Categories{
     var title:String?
     var isChecked:Bool=false
     var image:String?
     var description:String?
-    var itemList: [String]?
+    var itemList: [ToDoItem]?
     var authorId: String
     var id:String
     
-    public init(title:String="", isChecked:Bool=false, image:String="", description:String="", itemList:[String]=[String](), id:String="", authorId:String=""){
+    public init(title:String="", isChecked:Bool=false, image:String="", description:String="", itemList:[ToDoItem]=[ToDoItem](), id:String="", authorId:String=""){
         self.title = title
         self.isChecked = isChecked
         self.image = image

@@ -9,11 +9,19 @@
 import UIKit
 let modelData = ModelData()
 class ModelData{
+    //Catégories
     var categories:[Categories]?
     var filteredCategories:[Categories]?
     
+    //ToDoItem
+    var filteredToDoItem:[ToDoItem]?
+    
     static var documentDirectory:URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    
+    func addToDoToCollectionList(categoryIndex:Int, toDoItem:ToDoItem){
+        categories![categoryIndex].itemList!.append(toDoItem)
     }
     
     static var dataFileUrl:URL {
@@ -23,15 +31,24 @@ class ModelData{
     required init() {
         categories = [Categories]()
         filteredCategories = [Categories]()
+        filteredToDoItem = [ToDoItem]()
         print("Data adresse : "+ModelData.dataFileUrl.absoluteString)
     }
     
-    func saveChecklistItems(){
-        savetoJSON()
-        exportToFirebaseDatabase()
+    func loadCategoryTitles()->[String]{
+        var categoryList = [String]()
+        categories!.forEach { (category) in
+            categoryList.append(category.title!)
+        }
+        return categoryList
     }
     
-    func savetoJSON(){
+    func saveChecklistItems(){
+        //savetoJSON()
+        //exportToFirebaseDatabase()
+    }
+    
+    /*func savetoJSON(){
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -40,7 +57,7 @@ class ModelData{
             try jsonData.write(to: ModelData.dataFileUrl)
         }
         catch{}
-    }
+    }*/
     
     func exportToFirebaseDatabase(){
         firebaseCloudFirestore.saveCategories()
@@ -52,12 +69,18 @@ class ModelData{
         })
     }
     
-    func loadFromFirebase(tableView: UITableView){
-        firebaseCloudFirestore.loadAllCategories(tableView: tableView)
+    func filterToDoItem(_ searchController:UISearchController, categoryId:Int){
+        filteredToDoItem = categories![categoryId].itemList!.filter({( toDoItem : ToDoItem) -> Bool in
+            return toDoItem.toDoName.lowercased().contains(searchController.searchBar.text!.lowercased())
+        })
     }
     
-    func removeCategoryFromFirebase(tableView: UITableView, key:Int){
-        firebaseCloudFirestore.removeCategory(tableView: tableView, key: self.categories![key].id)
+    func loadFromFirebase(tableView: UITableView){
+        firebaseCloudFirestore.loadCategoriesIfExist(tableView: tableView)
+    }
+    
+    func removeCategoryFromFirebase(key:Int){
+        firebaseCloudFirestore.removeElement(key: self.categories![key].id)
         categories?.remove(at: key)
     }
     
