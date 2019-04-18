@@ -16,6 +16,7 @@
 		0844624E225C6BC40062D6F9 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844624D225C6BC40062D6F9 /* ToDoItem.swift */; };
 		08446250225C6D920062D6F9 /* ToDoListItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0844624F225C6D920062D6F9 /* ToDoListItemTableViewController.swift */; };
 		08446252225C6ED90062D6F9 /* ToDoListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08446251225C6ED90062D6F9 /* ToDoListItemCell.swift */; };
+		087F5F322268673C0057F929 /* NavigationOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F5F312268673C0057F929 /* NavigationOptionsController.swift */; };
 		08890E5E223F8FE40059D64F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E5D223F8FE40059D64F /* CategoryCell.swift */; };
 		08890E6A223FB1FA0059D64F /* ConnectionScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08890E69223FB1FA0059D64F /* ConnectionScreen.storyboard */; };
 		08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08890E6B223FB2AC0059D64F /* ConnectionController.swift */; };
@@ -43,6 +44,7 @@
 		0844624D225C6BC40062D6F9 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		0844624F225C6D920062D6F9 /* ToDoListItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemTableViewController.swift; sourceTree = "<group>"; };
 		08446251225C6ED90062D6F9 /* ToDoListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemCell.swift; sourceTree = "<group>"; };
+		087F5F312268673C0057F929 /* NavigationOptionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationOptionsController.swift; sourceTree = "<group>"; };
 		08890E5D223F8FE40059D64F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		08890E69223FB1FA0059D64F /* ConnectionScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectionScreen.storyboard; sourceTree = "<group>"; };
 		08890E6B223FB2AC0059D64F /* ConnectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,14 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		087F5F30226867220057F929 /* NavigationSide */ = {
+			isa = PBXGroup;
+			children = (
+				087F5F312268673C0057F929 /* NavigationOptionsController.swift */,
+			);
+			path = NavigationSide;
+			sourceTree = "<group>";
+		};
 		088A6CCB224100AD00778C38 /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +206,7 @@
 		08E7A00D222001120014283B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				087F5F30226867220057F929 /* NavigationSide */,
 				08266E5A225F24CD00D5550E /* ToDoItems */,
 				08266E59225F24A900D5550E /* CategoryList */,
 				08266E58225F249900D5550E /* Connection */,
@@ -350,6 +361,7 @@
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -367,6 +379,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -406,6 +419,7 @@
 				08160F47221FE8D200571EA8 /* AppDelegate.swift in Sources */,
 				08160F5D221FEE1000571EA8 /* Categories.swift in Sources */,
 				08FDFBA3225230D40032C2C8 /* FirebaseDatabase.swift in Sources */,
+				087F5F322268673C0057F929 /* NavigationOptionsController.swift in Sources */,
 				08A33413225B650F006A13A5 /* ToDoItemDetailTableViewController.swift in Sources */,
 				08D8E122225F3BE7003D6B8A /* FirebaseStorage.swift in Sources */,
 				08890E6C223FB2AC0059D64F /* ConnectionController.swift in Sources */,

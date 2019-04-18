@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class CategoryListTableViewController: UITableViewController {
     var searchController:UISearchController?
@@ -16,6 +17,7 @@ class CategoryListTableViewController: UITableViewController {
         super.viewDidLoad()
         initSearchController()
         loadData()
+        SideMenuManager.default.menuLeftNavigationController = UISideMenuNavigationController(rootViewController: NavigationOptionsController())
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
